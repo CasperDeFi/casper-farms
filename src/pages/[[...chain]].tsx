@@ -1,26 +1,48 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import Pool from '../components/Pool'
 import pools from '../data/pools.json'
 import ListBox from '../components/ListBox'
+import ChainPicker from '../components/ChainPicker'
 
-export default function IndexPage() {
-    const people = [
-        { key: 'Durward Reynolds', value: false },
-        { key: 'Kenton Towne', value: false },
-        { key: 'Therese Wunsch', value: false },
-        { key: 'Benedict Kessler', value: true },
-        { key: 'Katelyn Rohan', value: false }
-    ]
+const people = [
+    { key: 'Durward Reynolds', value: false },
+    { key: 'Kenton Towne', value: false },
+    { key: 'Therese Wunsch', value: false },
+    { key: 'Benedict Kessler', value: true },
+    { key: 'Katelyn Rohan', value: false }
+]
+
+export function getServerSideProps(context) {
+    return { props: { query: context.query } }
+}
+
+export default function IndexPage({ query }) {
+    const router = useRouter()
+
+    const [chain, setChain] = useState(query.chain[0])
+    const [showChainPicker, setShowChainPicker] = useState(false)
     const [selectedPerson, setSelectedPerson] = useState(people[0])
+
+    useEffect(() => {
+        router.push(`/${chain}`, undefined, { shallow: true })
+    }, [chain])
 
     return (
         <>
-            <div className="fixed z-10 w-full p-6 flex items-center">
+            <ChainPicker open={showChainPicker} onClose={() => setShowChainPicker(false)} {...{ chain, setChain }} />
+
+            <div className="fixed z-10 w-full p-6 flex items-center space-x-4">
                 <a href="">
                     <img className="w-12" src="/img/casper-money.svg" alt="" />
                 </a>
                 <div className="flex-1" />
+
+                <button onClick={() => setShowChainPicker((_) => !_)} type="button" className="w-6 h-6 grid place-items-center bg-white rounded-full shadow-2xl animate-spin">
+                    <i className="fas fa-link text-black" />
+                </button>
+
                 <button type="button" className="border-2 rounded-full px-2 md:px-4 py-1 md:py-2 text-xs md:text-xl border-white shadow-2xl bg-black bg-opacity-90">
                     Connect Wallet
                 </button>
