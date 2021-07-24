@@ -21,7 +21,7 @@ export function getServerSideProps(context) {
 export default function IndexPage({ query }) {
     const router = useRouter()
 
-    const [chain, setChain] = useState(query.chain[0])
+    const [chain, setChain] = useState(query?.chain?.[0] || 'FTM')
     const [showChainPicker, setShowChainPicker] = useState(false)
     const [selectedPerson, setSelectedPerson] = useState(people[0])
 
@@ -47,6 +47,7 @@ export default function IndexPage({ query }) {
                     Connect Wallet
                 </button>
             </div>
+
             <div className="max-w-7xl mx-auto p-6 py-12 md:p-12 md:py-24 space-y-12">
                 <div>
                     <motion.img animate={{ y: ['0%', '2%', '0%'] }} transition={{ loop: Infinity, duration: 2 }} className="w-64 mx-auto" src="/img/casper-farms.svg" alt="" />
