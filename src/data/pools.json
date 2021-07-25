@@ -1,92 +1,29 @@
 [
     {
         "id": 0,
-        "name": "CASPER/ETH",
-        "img": "https://img.myfuckingpickle.io/?t=6674"
+        "name": "CASPER",
+        "img": "https://i.imgur.com/DmVcyI2.png",
+        "risk": 2,
+        "type": "single-stake",
+        "asset": "casper",
+        "slug": "casper"
     },
     {
         "id": 1,
-        "name": "CASPER/BNB",
-        "img": "https://img.myfuckingpickle.io/?t=1"
+        "name": "CASPER-FTM LP",
+        "img": "https://i.imgur.com/SDpCdcs.png",
+        "risk": 2,
+        "type": "lp-stake",
+        "asset": "casper, ftm",
+        "slug": "casper"
     },
     {
         "id": 2,
-        "name": "CASPER/FTM",
-        "img": "https://img.myfuckingpickle.io/?t=6672"
-    },
-    {
-        "id": 3,
-        "name": "CASPER/SPIRIT",
-        "img": "https://img.myfuckingpickle.io/?t=6673"
-    },
-    {
-        "id": 2,
-        "name": "CASPER/FTM",
-        "img": "https://img.myfuckingpickle.io/?t=6672"
-    },
-    {
-        "id": 3,
-        "name": "CASPER/SPIRIT",
-        "img": "https://img.myfuckingpickle.io/?t=6673"
-    },
-    {
-        "id": 2,
-        "name": "CASPER/FTM",
-        "img": "https://img.myfuckingpickle.io/?t=6672"
-    },
-    {
-        "id": 3,
-        "name": "CASPER/SPIRIT",
-        "img": "https://img.myfuckingpickle.io/?t=6673"
-    },
-    {
-        "id": 2,
-        "name": "CASPER/FTM",
-        "img": "https://img.myfuckingpickle.io/?t=6672"
-    },
-    {
-        "id": 3,
-        "name": "CASPER/SPIRIT",
-        "img": "https://img.myfuckingpickle.io/?t=6673"
-    },
-    {
-        "id": 2,
-        "name": "CASPER/FTM",
-        "img": "https://img.myfuckingpickle.io/?t=6672"
-    },
-    {
-        "id": 3,
-        "name": "CASPER/SPIRIT",
-        "img": "https://img.myfuckingpickle.io/?t=6673"
-    },
-    {
-        "id": 2,
-        "name": "CASPER/FTM",
-        "img": "https://img.myfuckingpickle.io/?t=6672"
-    },
-    {
-        "id": 3,
-        "name": "CASPER/SPIRIT",
-        "img": "https://img.myfuckingpickle.io/?t=6673"
-    },
-    {
-        "id": 2,
-        "name": "CASPER/FTM",
-        "img": "https://img.myfuckingpickle.io/?t=6672"
-    },
-    {
-        "id": 3,
-        "name": "CASPER/SPIRIT",
-        "img": "https://img.myfuckingpickle.io/?t=6673"
-    },
-    {
-        "id": 2,
-        "name": "CASPER/FTM",
-        "img": "https://img.myfuckingpickle.io/?t=6672"
-    },
-    {
-        "id": 3,
-        "name": "CASPER/SPIRIT",
-        "img": "https://img.myfuckingpickle.io/?t=6673"
+        "name": "CASPER-USDC LP",
+        "img": "https://i.imgur.com/oyQDkpx.png",
+        "risk": 2,
+        "type": "lp-stake",
+        "asset": "casper, usdc",
+        "slug": "casper"
     }
 ]
