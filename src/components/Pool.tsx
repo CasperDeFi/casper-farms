@@ -64,6 +64,7 @@ export default function Pool({ pool }) {
                     </button>
                 </div>
             </div>
+            {allowance}
             <AnimatePresence>
                 {open && (
                     <motion.div onClick={(e) => e.stopPropagation()} className="overflow-hidden" initial={{ height: '0' }} animate={{ height: 'auto' }} exit={{ height: '0' }}>
