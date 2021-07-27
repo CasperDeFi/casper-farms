@@ -55,6 +55,7 @@ export default function useFarms(slug) {
 
             const balanceFromWeb3 = await tokenContract.methods.balanceOf(wallet.account).call()
             setBalance(balanceFromWeb3)
+            console.log('Balance:',balance)
 
             const tvlFromWeb3 = await tokenContract.methods.balanceOf(POOL_CONTRACT_ADDRESS).call()
 

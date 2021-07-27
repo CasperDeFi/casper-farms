@@ -81,7 +81,7 @@ export default function Pool({ pool }) {
                                         <input value={depositInput} onChange={(e) => setDepositInput(e.target.value)} placeholder="0.00" className="w-full flex-1 bg-transparent p-2" type="number" />
                                         <div className="p-2">
                                             <button
-                                                onClick={() => setDepositInput(parseFloat(fromWei(balance.toString())).toFixed(2))}
+                                                onClick={() => setDepositInput(fromWei(balance.toString()))}
                                                 type="button"
                                                 className="bg-purple-800 text-purple-200 px-2 py-1 rounded text-xs uppercase font-mono"
                                             >
