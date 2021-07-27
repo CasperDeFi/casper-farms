@@ -9,7 +9,7 @@ export default function Pool({ pool }) {
 
     const { tvl, balance } = data
 
-    useEffect(() => console.log(data), [data])
+    // useEffect(() => console.log(data), [data])
 
     const [open, setOpen] = useState(false)
 
@@ -20,12 +20,15 @@ export default function Pool({ pool }) {
 
     return (
         <div onClick={() => setOpen((_) => !_)} type="button" className="relative block w-full text-left rounded-xl border border-purple-900 p-6 shadow-2xl">
-            {/* {status} */}
             {status === 'loading' && (
                 <div className="absolute top-0 right-0 p-6">
                     <img className={classNames('w-6 animate-spin')} src="/img/casper.png" alt="" />
                 </div>
             )}
+
+            <div className="bg-purple-600 border-2 border-purple-800 rounded shadow-2xl text-purple-200 text-xs font-mono px-2 py-1 absolute top-0 left-0 transform -translate-x-2 -translate-y-2">
+                <p>{data.multiplier}</p>
+            </div>
             <div className="flex flex-gap-6 md:flex-gap-12 flex-wrap items-center">
                 <div className="rounded-2xl shadow-2xl h-20 w-20 bg-center bg-cover" style={{ backgroundImage: `url("${pool.img}")` }} />
                 <div>

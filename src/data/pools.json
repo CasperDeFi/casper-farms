@@ -8,7 +8,8 @@
         "asset": ["casper", "ftm"],
         "slug": "casper-ftm",
         "address": "0xca08C87466319F58660a439E46329D689718FefC",
-        "fee": "0%"
+        "fee": "0%",
+        "multiplier": "0.5%"
     },
     {
         "id": 1,
@@ -19,7 +20,8 @@
         "asset": "casper",
         "slug": "casper",
         "address": "0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345",
-        "fee": "0%"
+        "fee": "0%",
+        "multiplier": "0.5%"
     },
     {
         "id": 2,
@@ -30,7 +32,8 @@
         "asset": ["casper", "usdc"],
         "slug": "casper-usdc",
         "address": "0xdEA1B59D5749A22F768C2E1FD62557D05D45D0C2",
-        "fee": "0%"
+        "fee": "0%",
+        "multiplier": "2%"
     },
     {
         "id": 3,
@@ -41,6 +44,7 @@
         "asset": "wftm",
         "slug": "wftm",
         "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83",
-        "fee": "2%"
+        "fee": "2%",
+        "multiplier": "0.5%"
     }
 ]
