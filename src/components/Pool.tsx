@@ -142,7 +142,7 @@ export default function Pool({ pool }) {
                                     <p className="font-extended uppercase">Harvest</p>
                                     <div className="flex items-center space-x-4">
                                         <img className="w-16" src="/img/casper-money.svg" alt="" />
-                                        <p className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-blue-400 via-yellow-400 to-green-500">{data?.userInfo?.rewardDebt || 'XX'}</p>
+                                        <p className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-blue-400 via-yellow-400 to-green-500">{parseFloat(fromWei(data?.userInfo?.rewardDebt)).toFixed(2) || 'XX'}</p>
                                     </div>
                                     <div className="flex-1" />
                                     <div>

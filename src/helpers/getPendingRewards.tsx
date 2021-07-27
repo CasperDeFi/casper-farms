@@ -13,13 +13,22 @@ export default async function GetPendingRewards() {
 
     let pendingCasper = 0
 
-    if (wallet.account) {
-        for (let pid = 0; pid < 4; pid++) {
-            const pendingReward = await contract.methods.pendingCASPER(pid, wallet.account).call()
-            pendingCasper += pendingReward
-        }
-    }
+    // if (wallet.account) {
+    //     const pendingReward0 = await contract.methods.pendingCASPER(0, wallet.account).call()
+    //     const pendingReward1 = await contract.methods.pendingCASPER(1, wallet.account).call()
+    //     const pendingReward2 = await contract.methods.pendingCASPER(2, wallet.account).call()
+    //     const pendingReward3 = await contract.methods.pendingCASPER(3, wallet.account).call()
 
+    //     const pendingFormatted0 = web3.utils.fromWei(pendingReward0)
+    //     const pendingFormatted1 = web3.utils.fromWei(pendingReward1)
+    //     const pendingFormatted2 = web3.utils.fromWei(pendingReward2)
+    //     const pendingFormatted3 = web3.utils.fromWei(pendingReward3)
+
+    //     pendingCasper = pendingFormatted0 + pendingFormatted1 + pendingFormatted2 + pendingFormatted3
+    //     console.log('pendi',pendingCasper)
+    // }
+
+    web3.utils.fromWei(pendingCasper.toString())
     return pendingCasper
 }
 
