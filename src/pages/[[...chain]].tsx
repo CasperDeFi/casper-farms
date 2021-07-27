@@ -33,21 +33,26 @@ export default function IndexPage({ query }) {
 
     return (
         <>
-            <ChainPicker open={showChainPicker} onClose={() => setShowChainPicker(false)} {...{ chain, setChain }} />
+            {/* <ChainPicker open={showChainPicker} onClose={() => setShowChainPicker(false)} {...{ chain, setChain }} /> */}
 
-            <div className="fixed z-10 w-full p-6 flex items-center space-x-4">
-                <a href="">
-                    <img className="w-12" src="/img/casper-money.svg" alt="" />
-                </a>
-                <div className="flex-1" />
-
-                <button onClick={() => setShowChainPicker((_) => !_)} type="button" className="w-6 h-6 grid place-items-center bg-white rounded-full shadow-2xl animate-spin">
-                    <i className="fas fa-link text-black" />
-                </button>
-
-                <button onClick={() => wallet.connect()} type="button" className="border-2 rounded-full px-2 md:px-4 py-1 md:py-2 text-xs md:text-xl border-white shadow-2xl bg-black bg-opacity-90">
-                    {wallet.account ? `${wallet?.account?.slice(0, 6)}...${wallet?.account?.slice(-6)}` : 'Connect Wallet'}
-                </button>
+            <div className="fixed z-10 w-full">
+                <div className="bg-purple-900 bg-opacity-50 p-2">
+                    <div className="max-w-7xl mx-auto text-xs">
+                        <p className="font-medium">Warning: CasperDefi is in beta and has risks of loss. Do your own research before using any of the tools available on CasperDefi.</p>
+                    </div>
+                </div>
+                <div className="p-6 flex items-center space-x-4">
+                    <a href="">
+                        <img className="w-12" src="/img/casper-money.svg" alt="" />
+                    </a>
+                    <div className="flex-1" />
+                    {/* <button onClick={() => setShowChainPicker((_) => !_)} type="button" className="w-6 h-6 grid place-items-center bg-white rounded-full shadow-2xl animate-spin">
+                        <i className="fas fa-link text-black" />
+                    </button> */}
+                    <button onClick={() => wallet.connect()} type="button" className="border-2 rounded-full px-2 md:px-4 py-1 md:py-2 text-xs md:text-xl border-white shadow-2xl bg-black bg-opacity-90">
+                        {wallet.account ? `${wallet?.account?.slice(0, 6)}...${wallet?.account?.slice(-6)}` : 'Connect Wallet'}
+                    </button>
+                </div>
             </div>
 
             <div className="max-w-7xl mx-auto p-6 py-12 md:p-12 md:py-24 space-y-12">
@@ -60,12 +65,12 @@ export default function IndexPage({ query }) {
                     <p className="font-extended uppercase">Total Value Locked</p>
                 </div>
 
-                <div className="flex flex-gap-6 flex-wrap items-center justify-center hide-scroll-bars">
+                {/* <div className="flex flex-gap-6 flex-wrap items-center justify-center hide-scroll-bars">
                     <ListBox label="Risk Level" data={people} value={selectedPerson} onChange={setSelectedPerson} />
                     <ListBox label="Type" data={people} value={selectedPerson} onChange={setSelectedPerson} />
                     <ListBox label="Asset" data={people} value={selectedPerson} onChange={setSelectedPerson} />
                     <ListBox label="Sort By" data={people} value={selectedPerson} onChange={setSelectedPerson} />
-                </div>
+                </div> */}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="bg-black bg-opacity-25 rounded-xl border border-yellow-400 shadow-2xl p-6 py-12 flex items-center justify-center space-x-6">

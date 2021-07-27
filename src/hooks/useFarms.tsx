@@ -49,16 +49,6 @@ export default function useFarms(slug) {
 
         try {
             const poolInfoFromWeb3 = await contract.methods.poolInfo(id).call()
-            // setPoolInfo(poolInfoFromWeb3)
-            const tokenContract = new web3.eth.Contract(tokenAbi as any, poolInfoFromWeb3.lpToken)
-            // const balanceFromWeb3 = await tokenContract.methods.balanceOf(wallet.account).call()
-            setTvl(balanceFromWeb3)
-        } catch (error) {
-            console.log(error)
-        }
-
-        try {
-            const poolInfoFromWeb3 = await contract.methods.poolInfo(id).call()
             setPoolInfo(poolInfoFromWeb3)
 
             const tokenContract = new web3.eth.Contract(tokenAbi as any, poolInfoFromWeb3.lpToken)
