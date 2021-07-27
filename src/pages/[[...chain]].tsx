@@ -6,6 +6,8 @@ import Pool from '../components/Pool'
 import pools from '../data/pools.json'
 import ListBox from '../components/ListBox'
 import ChainPicker from '../components/ChainPicker'
+import useTVL from '../helpers/useTVL'
+import GetPendingRewards, { GetPendingRewardsUSD } from '../helpers/getPendingRewards'
 
 const people = [
     { key: 'Durward Reynolds', value: false },
@@ -26,10 +28,33 @@ export default function IndexPage({ query }) {
     const [chain, setChain] = useState(query?.chain?.[0] || 'FTM')
     const [showChainPicker, setShowChainPicker] = useState(false)
     const [selectedPerson, setSelectedPerson] = useState(people[0])
+    const [tvl, setTvl] = useState("loading")
+    const [pendingCasper, setPendingCasper] = useState(0)
+    const [pendingCasperUSD, setPendingCasperUSD] = useState(0)
 
     useEffect(() => {
         router.push(`/${chain}`, undefined, { shallow: true })
     }, [chain])
+
+    const getTVL = async () => {
+        const temp = await useTVL()
+        setTvl(temp.toLocaleString('en-US', { style: 'currency', currency: 'USD' }))
+    }
+    getTVL()
+
+    const getPendingRewards = async () => {
+        const temp = await GetPendingRewards()
+        setPendingCasper(temp)
+    }
+    getPendingRewards()
+    
+    const getPendingRewardsUSD = async () => {
+        const temp = await GetPendingRewardsUSD()
+        setPendingCasperUSD(temp)
+    }
+    getPendingRewardsUSD()
+
+
 
     return (
         <>
@@ -61,7 +86,7 @@ export default function IndexPage({ query }) {
                 </div>
 
                 <div className="text-center space-y-2">
-                    <p className="text-4xl md:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">$1,320.23</p>
+                    <p className="text-4xl md:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">{tvl}</p>
                     <p className="font-extended uppercase">Total Value Locked</p>
                 </div>
 
@@ -84,8 +109,8 @@ export default function IndexPage({ query }) {
                         <img className="block h-32" src="/img/casper-money.svg" alt="" />
                         <div>
                             <p className="font-extended uppercase">Pending Rewards</p>
-                            <p className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">118 CASPER</p>
-                            <p className="font-mono opacity-50 text-xl">~$12,000</p>
+                            <p className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">{pendingCasper} CASPER</p>
+                            <p className="font-mono opacity-50 text-xl">~{pendingCasperUSD}</p>
                         </div>
                     </div>
                 </div>

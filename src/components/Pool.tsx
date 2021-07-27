@@ -15,6 +15,8 @@ export default function Pool({ pool }) {
 
     const [depositInput, setDepositInput] = useState('')
     const [withdrawInput, setWithdrawInput] = useState('')
+    const [yearlyAPR, setYearlyAPR] = useState("loading")
+    const [dailyAPR, setDailyAPR] = useState("loading")
 
     return (
         <div onClick={() => setOpen((_) => !_)} type="button" className="relative block w-full text-left rounded-xl border border-purple-900 p-6 shadow-2xl">
@@ -34,18 +36,18 @@ export default function Pool({ pool }) {
                             <p className="uppercase text-xs font-extended opacity-50">Balance</p>
                         </div>
                         <div className="space-y-1">
-                            <p className="text-2xl font-extrabold">{data?.userInfo?.amount ? fromWei(data?.userInfo?.amount) : 'XX'}</p>
+                            <p className="text-2xl font-extrabold">{data?.userInfo?.amount ? parseFloat(fromWei(data?.userInfo?.amount)).toFixed(2) : 'XX'}</p>
                             <p className="uppercase text-xs font-extended opacity-50">Deposited</p>
                         </div>
                     </div>
                 </div>
                 <p />
                 <div className="space-y-1">
-                    <p className="text-4xl font-extrabold">666%</p>
+                    <p className="text-4xl font-extrabold">{yearlyAPR}</p>
                     <p className="uppercase font-extended opacity-50 text-sm">Yearly</p>
                 </div>
                 <div className="space-y-1">
-                    <p className="text-4xl font-extrabold">2.1%</p>
+                    <p className="text-4xl font-extrabold">{yearlyAPR}</p>
                     <p className="uppercase font-extended opacity-50 text-sm">Daily</p>
                 </div>
                 <div className="space-y-1">
