@@ -31,6 +31,7 @@ export default function IndexPage({ query }) {
     const [tvl, setTvl] = useState("loading")
     const [pendingCasper, setPendingCasper] = useState(0)
     const [pendingCasperUSD, setPendingCasperUSD] = useState(0)
+    const [userDepositUSD, setUserDepositUSD] = useState("Coming soon")
 
     useEffect(() => {
         router.push(`/${chain}`, undefined, { shallow: true })
@@ -102,7 +103,7 @@ export default function IndexPage({ query }) {
                         <img className="block h-32" src="/img/casper-money.svg" alt="" />
                         <div>
                             <p className="font-extended uppercase">My Total Deposit</p>
-                            <p className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">$1,320.23</p>
+                            <p className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">{userDepositUSD}</p>
                         </div>
                     </div>
                     <div className="bg-black bg-opacity-25 rounded-xl border border-yellow-400 shadow-2xl p-6 py-12 flex items-center justify-center space-x-6">
