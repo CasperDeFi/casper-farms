@@ -60,10 +60,10 @@ export default function IndexPage({ query }) {
                     <motion.img animate={{ y: ['0%', '2%', '0%'] }} transition={{ loop: Infinity, duration: 2 }} className="w-64 mx-auto" src="/img/casper-farms.svg" alt="" />
                 </div>
 
-                <div className="text-center space-y-2">
+                {/* <div className="text-center space-y-2">
                     <p className="text-4xl md:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">$1,320.23</p>
                     <p className="font-extended uppercase">Total Value Locked</p>
-                </div>
+                </div> */}
 
                 {/* <div className="flex flex-gap-6 flex-wrap items-center justify-center hide-scroll-bars">
                     <ListBox label="Risk Level" data={people} value={selectedPerson} onChange={setSelectedPerson} />
@@ -72,7 +72,7 @@ export default function IndexPage({ query }) {
                     <ListBox label="Sort By" data={people} value={selectedPerson} onChange={setSelectedPerson} />
                 </div> */}
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="bg-black bg-opacity-25 rounded-xl border border-yellow-400 shadow-2xl p-6 py-12 flex items-center justify-center space-x-6">
                         <img className="block h-32" src="/img/casper-money.svg" alt="" />
                         <div>
@@ -88,7 +88,8 @@ export default function IndexPage({ query }) {
                             <p className="font-mono opacity-50 text-xl">~$12,000</p>
                         </div>
                     </div>
-                </div>
+                </div> */}
+
                 <div className="space-y-6">
                     {pools.map((pool) => (
                         <Pool pool={pool} key={pool.id} />
