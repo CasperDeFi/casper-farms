@@ -16,7 +16,7 @@ export default function useFarms(slug) {
     const [poolInfo, setPoolInfo] = useState({})
     const [userInfo, setUserInfo] = useState({})
 
-    const [tvl, setTvl] = useState(0)
+    const [tvl, setTvl] = useState("0")
 
     const contract = new web3.eth.Contract(poolAbi as any, POOL_CONTRACT_ADDRESS)
 
@@ -55,11 +55,10 @@ export default function useFarms(slug) {
 
             const balanceFromWeb3 = await tokenContract.methods.balanceOf(wallet.account).call()
             setBalance(balanceFromWeb3)
-            console.log('Balance:',balance)
 
-            const tvlFromWeb3 = await tokenContract.methods.balanceOf(POOL_CONTRACT_ADDRESS).call()
+            // const tvlFromWeb3 = await tokenContract.methods.balanceOf(POOL_CONTRACT_ADDRESS).call()
 
-            setTvl(tvlFromWeb3)
+            // setTvl(tvlFromWeb3)
         } catch (error) {
             console.log(error)
         }
@@ -107,6 +106,61 @@ export default function useFarms(slug) {
         }
         onInitialLoad()
     }, [wallet])
+
+
+    const getTVL = async () => {
+
+        let web3Default = new Web3("Https://rpc.ftm.tools")
+
+        const contractWFTM = new web3Default.eth.Contract(tokenAbi as any, "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83")
+        const FTMPriceRequest = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=fantom&vs_currencies=usd')
+        const FTMPriceResponse = await FTMPriceRequest.json()
+        const FTMPrice = FTMPriceResponse.fantom.usd
+
+        const contractCASPER = new web3Default.eth.Contract(tokenAbi as any, "0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345")
+        const CasperPriceRequest = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=casper-defi&vs_currencies=usd")
+        const CasperPriceResponse = await CasperPriceRequest.json()
+        let CasperPrice = CasperPriceResponse["casper-defi"]["usd"]
+
+        const contractUSDC = new web3Default.eth.Contract(tokenAbi as any, "0x04068da6c83afcfa0e13ba15a6696662335d5b75")
+
+
+        switch (id) {
+            case 0:
+                const balanceWFTM = await contractWFTM.methods.balanceOf("0xca08C87466319F58660a439E46329D689718FefC").call()
+                const balanceWFTMFormatted = await web3Default.utils.fromWei(balanceWFTM)
+                let pool0TVL = parseFloat(balanceWFTMFormatted) * 2 * FTMPrice
+                const prettyTVL0 = pool0TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+                setTvl(prettyTVL0)
+                break;
+            case 1:
+                const balanceCasper = await contractCASPER.methods.balanceOf("0xaD580d9b5C9c043325b3D8C33B1166B8f8E93E74").call()
+                let pool1TVL = parseFloat(web3Default.utils.fromWei(balanceCasper)) * CasperPrice
+                const prettyTVL1 = pool1TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+                setTvl(prettyTVL1)
+                break;
+            case 2:
+                const balanceUSDC = await contractUSDC.methods.balanceOf("0xdEA1B59D5749A22F768C2E1FD62557D05D45D0C2").call()
+                const balanceUSDCFormatted = 1000000000000 * parseFloat(web3Default.utils.fromWei(balanceUSDC))
+                console.log(balanceUSDCFormatted)
+                let pool2TVL = balanceUSDCFormatted * 2
+                const prettyTVL2 = pool2TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+                setTvl(prettyTVL2)
+                break;
+            case 3:
+                const balanceWFTMMasterchef = await contractWFTM.methods.balanceOf("0xaD580d9b5C9c043325b3D8C33B1166B8f8E93E74").call()
+                const pool3TVL = parseFloat(web3Default.utils.fromWei(balanceWFTMMasterchef)) * FTMPrice 
+                const prettyTVL3 = pool3TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+                setTvl(prettyTVL3)
+
+                break;
+
+        }
+
+
+
+    }
+    getTVL()
 
     return {
         status,

@@ -49,7 +49,7 @@ export default function Pool({ pool }) {
                     <p className="uppercase font-extended opacity-50 text-sm">Daily</p>
                 </div>
                 <div className="space-y-1">
-                    <p className="text-4xl font-extrabold">{fromWei(tvl.toString())}</p>
+                    <p className="text-4xl font-extrabold">{(tvl.toString())}</p>
                     <p className="uppercase font-extended opacity-50 text-sm">TVL</p>
                 </div>
                 <div className="flex-1" />
