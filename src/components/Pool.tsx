@@ -7,7 +7,7 @@ import useFarms from '../hooks/useFarms'
 export default function Pool({ pool }) {
     const { status, web3, data, withdraw, allowance, deposit, harvest } = useFarms(pool.slug)
 
-    const { tvl, balance } = data
+    const { tvl, balance, yearlyAPR, dailyAPR } = data
 
     // useEffect(() => console.log(data), [data])
 
@@ -15,8 +15,7 @@ export default function Pool({ pool }) {
 
     const [depositInput, setDepositInput] = useState('')
     const [withdrawInput, setWithdrawInput] = useState('')
-    const [yearlyAPR, setYearlyAPR] = useState('loading')
-    const [dailyAPR, setDailyAPR] = useState('loading')
+
 
     return (
         <div onClick={() => setOpen((_) => !_)} type="button" className="relative block w-full text-left rounded-xl border border-purple-900 p-6 shadow-2xl">
@@ -46,11 +45,11 @@ export default function Pool({ pool }) {
                 </div>
                 <p />
                 <div className="space-y-1">
-                    <p className="text-4xl font-extrabold">{yearlyAPR}</p>
+                    <p className="text-4xl font-extrabold">{data?.yearlyAPR}%</p>
                     <p className="uppercase font-extended opacity-50 text-sm">Yearly</p>
                 </div>
                 <div className="space-y-1">
-                    <p className="text-4xl font-extrabold">{yearlyAPR}</p>
+                    <p className="text-4xl font-extrabold">{data?.dailyAPR}%</p>
                     <p className="uppercase font-extended opacity-50 text-sm">Daily</p>
                 </div>
                 <div className="space-y-1">

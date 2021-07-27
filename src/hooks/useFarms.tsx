@@ -16,6 +16,8 @@ export default function useFarms(slug) {
     const [poolInfo, setPoolInfo] = useState({})
     const [userInfo, setUserInfo] = useState({})
     const [allowance, setAllowance] = useState(0)
+    const [yearlyAPR, setYearlyAPR] = useState('loading')
+    const [dailyAPR, setDailyAPR] = useState('loading')
 
     const [tvl, setTvl] = useState('0')
 
@@ -53,6 +55,7 @@ export default function useFarms(slug) {
         try {
             const poolInfoFromWeb3 = await contract.methods.poolInfo(id).call()
             setPoolInfo(poolInfoFromWeb3)
+            console.log('info', id, poolInfoFromWeb3)
 
             const tokenContract = new web3.eth.Contract(tokenAbi as any, poolInfoFromWeb3.lpToken)
 
@@ -158,6 +161,14 @@ export default function useFarms(slug) {
                 // let pool0TVL = parseFloat(balanceWFTMFormatted) * 2 * FTMPrice
                 const prettyTVL0 = LPWorth.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL0)
+
+                const yearly = (123671 * CasperPrice / LPWorth * 100)
+                const daily = yearly / 356
+                const yearlyFormatted = yearly.toFixed().toLocaleString()
+                const dailyFormatted = daily.toFixed(2).toLocaleString()
+                setYearlyAPR(yearlyFormatted)
+                setDailyAPR(dailyFormatted)
+
                 break
 
             case 1:
@@ -165,19 +176,43 @@ export default function useFarms(slug) {
                 const pool1TVL = parseFloat(web3Default.utils.fromWei(balanceCasper)) * CasperPrice
                 const prettyTVL1 = pool1TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL1)
+
+                const yearly1 = (61835 * CasperPrice / pool1TVL * 100)
+                const daily1 = yearly1 / 356
+                const yearlyFormatted1 = yearly1.toFixed().toLocaleString()
+                const dailyFormatted1 = daily1.toLocaleString()
+                setYearlyAPR(yearlyFormatted1)
+                setDailyAPR(dailyFormatted1)
+
                 break
             case 2:
                 const balanceUSDC = await contractUSDC.methods.balanceOf('0xdEA1B59D5749A22F768C2E1FD62557D05D45D0C2').call()
                 const balanceUSDCFormatted = 1000000000000 * parseFloat(web3Default.utils.fromWei(balanceUSDC))
-                const pool2TVL = balanceUSDCFormatted * 2
+                const pool2TVL = parseFloat((balanceUSDCFormatted * 2).toFixed())
                 const prettyTVL2 = pool2TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL2)
+
+                const yearly2 = (123671 * CasperPrice / pool2TVL * 100)
+                const daily2 = yearly2 / 356
+                const yearlyFormatted2 = yearly2.toFixed().toLocaleString()
+                const dailyFormatted2 = daily2.toFixed(2).toLocaleString()
+                setYearlyAPR(yearlyFormatted2)
+                setDailyAPR(dailyFormatted2)
+
                 break
             case 3:
                 const balanceWFTMMasterchef = await contractWFTM.methods.balanceOf('0xaD580d9b5C9c043325b3D8C33B1166B8f8E93E74').call()
                 const pool3TVL = parseFloat(web3Default.utils.fromWei(balanceWFTMMasterchef)) * FTMPrice
                 const prettyTVL3 = pool3TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL3)
+
+                const yearly3 = (6184 * CasperPrice / pool3TVL * 100)
+                const daily3 = yearly3 / 356
+                const yearlyFormatted3 = yearly3.toFixed(2).toLocaleString()
+                const dailyFormatted3 = daily3.toFixed(2).toLocaleString()
+                setYearlyAPR(yearlyFormatted3)
+                setDailyAPR(dailyFormatted3)
+
                 break
         }
     }
@@ -205,7 +240,9 @@ export default function useFarms(slug) {
             poolInfo,
             userInfo,
             tvl,
-            balance
+            balance,
+            dailyAPR,
+            yearlyAPR
         },
         deposit,
         withdraw,
