@@ -45,6 +45,6 @@
         "slug": "wftm",
         "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83",
         "fee": "2%",
-        "multiplier": "0.1"
+        "multiplier": "0.1x"
     }
 ]
