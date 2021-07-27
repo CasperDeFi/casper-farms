@@ -28,10 +28,10 @@ export default function IndexPage({ query }) {
     const [chain, setChain] = useState(query?.chain?.[0] || 'FTM')
     const [showChainPicker, setShowChainPicker] = useState(false)
     const [selectedPerson, setSelectedPerson] = useState(people[0])
-    const [tvl, setTvl] = useState("loading")
+    const [tvl, setTvl] = useState('loading')
     const [pendingCasper, setPendingCasper] = useState(0)
     const [pendingCasperUSD, setPendingCasperUSD] = useState(0)
-    const [userDepositUSD, setUserDepositUSD] = useState("Coming soon")
+    const [userDepositUSD, setUserDepositUSD] = useState('Coming soon')
 
     useEffect(() => {
         router.push(`/${chain}`, undefined, { shallow: true })
@@ -48,14 +48,12 @@ export default function IndexPage({ query }) {
         setPendingCasper(temp)
     }
     getPendingRewards()
-    
+
     const getPendingRewardsUSD = async () => {
         const temp = await GetPendingRewardsUSD()
         setPendingCasperUSD(temp)
     }
     getPendingRewardsUSD()
-
-
 
     return (
         <>
@@ -90,13 +88,6 @@ export default function IndexPage({ query }) {
                     <p className="text-4xl md:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">{tvl}</p>
                     <p className="font-extended uppercase">Total Value Locked</p>
                 </div>
-
-                {/* <div className="flex flex-gap-6 flex-wrap items-center justify-center hide-scroll-bars">
-                    <ListBox label="Risk Level" data={people} value={selectedPerson} onChange={setSelectedPerson} />
-                    <ListBox label="Type" data={people} value={selectedPerson} onChange={setSelectedPerson} />
-                    <ListBox label="Asset" data={people} value={selectedPerson} onChange={setSelectedPerson} />
-                    <ListBox label="Sort By" data={people} value={selectedPerson} onChange={setSelectedPerson} />
-                </div> */}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="bg-black bg-opacity-25 rounded-xl border border-yellow-400 shadow-2xl p-6 py-12 flex items-center justify-center space-x-6">

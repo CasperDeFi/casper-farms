@@ -25,6 +25,14 @@ export default function useFarms(slug) {
     const { id } = pool
 
     const approve = async (amount) => {
+        // @ts-ignore
+        const token = poolInfo?.lpToken
+
+        if (!token) return
+
+        // @ts-ignore
+        const tokenContract = new web3.eth.Contract(tokenAbi as any, poolInfo?.lpToken)
+
         if (amount > allowance) {
             tokenContract.methods.approve(POOL_CONTRACT_ADDRESS, web3.utils.toWei('999999999999')).send({ from: wallet.account })
         }
@@ -189,7 +197,6 @@ export default function useFarms(slug) {
         web3,
         contract,
         approve,
-        allowance,
         data: {
             ...pool,
             poolInfo,
