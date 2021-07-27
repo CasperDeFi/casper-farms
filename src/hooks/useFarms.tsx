@@ -198,6 +198,7 @@ export default function useFarms(slug) {
         status,
         web3,
         contract,
+        allowance,
         approve,
         data: {
             ...pool,
