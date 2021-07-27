@@ -1,5 +1,6 @@
 import '../styles/global.css'
 import Head from 'next/head'
+import { UseWalletProvider } from 'use-wallet'
 
 export default function App({ Component, pageProps }) {
     return (
@@ -13,7 +14,9 @@ export default function App({ Component, pageProps }) {
                     referrerPolicy="no-referrer"
                 />
             </Head>
-            <Component {...pageProps} />
+            <UseWalletProvider chainId={250}>
+                <Component {...pageProps} />
+            </UseWalletProvider>
         </>
     )
 }

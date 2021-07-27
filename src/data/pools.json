@@ -1,6 +1,6 @@
 [
     {
-        "id": 0,
+        "id": 2,
         "name": "CASPER",
         "img": "https://i.imgur.com/DmVcyI2.png",
         "risk": 2,
@@ -9,21 +9,21 @@
         "slug": "casper"
     },
     {
-        "id": 1,
+        "id": 0,
         "name": "CASPER-FTM LP",
         "img": "https://i.imgur.com/SDpCdcs.png",
         "risk": 2,
         "type": "lp-stake",
-        "asset": "casper, ftm",
-        "slug": "casper"
+        "asset": ["casper", "ftm"],
+        "slug": "casper-ftm"
     },
     {
-        "id": 2,
+        "id": 1,
         "name": "CASPER-USDC LP",
         "img": "https://i.imgur.com/oyQDkpx.png",
         "risk": 2,
         "type": "lp-stake",
-        "asset": "casper, usdc",
-        "slug": "casper"
+        "asset": ["casper", "usdc"],
+        "slug": "casper-usdc"
     }
 ]

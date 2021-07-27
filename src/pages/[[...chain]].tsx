@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { useWallet } from 'use-wallet'
 import Pool from '../components/Pool'
 import pools from '../data/pools.json'
 import ListBox from '../components/ListBox'
@@ -19,6 +20,7 @@ export function getServerSideProps(context) {
 }
 
 export default function IndexPage({ query }) {
+    const wallet = useWallet()
     const router = useRouter()
 
     const [chain, setChain] = useState(query?.chain?.[0] || 'FTM')
@@ -43,8 +45,8 @@ export default function IndexPage({ query }) {
                     <i className="fas fa-link text-black" />
                 </button>
 
-                <button type="button" className="border-2 rounded-full px-2 md:px-4 py-1 md:py-2 text-xs md:text-xl border-white shadow-2xl bg-black bg-opacity-90">
-                    Connect Wallet
+                <button onClick={() => wallet.connect()} type="button" className="border-2 rounded-full px-2 md:px-4 py-1 md:py-2 text-xs md:text-xl border-white shadow-2xl bg-black bg-opacity-90">
+                    {wallet.account ? `${wallet?.account?.slice(0, 6)}...${wallet?.account?.slice(-6)}` : 'Connect Wallet'}
                 </button>
             </div>
 
