@@ -1,15 +1,5 @@
 [
     {
-        "id": 2,
-        "name": "CASPER",
-        "img": "https://i.imgur.com/DmVcyI2.png",
-        "risk": 1,
-        "type": "single-stake",
-        "asset": "casper",
-        "slug": "casper",
-        "address": "0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345"
-    },
-    {
         "id": 0,
         "name": "CASPER-FTM LP",
         "img": "https://i.imgur.com/SDpCdcs.png",
@@ -21,6 +11,16 @@
     },
     {
         "id": 1,
+        "name": "CASPER",
+        "img": "https://i.imgur.com/DmVcyI2.png",
+        "risk": 1,
+        "type": "single-stake",
+        "asset": "casper",
+        "slug": "casper",
+        "address": "0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345"
+    },
+    {
+        "id": 2,
         "name": "CASPER-USDC LP",
         "img": "https://i.imgur.com/oyQDkpx.png",
         "risk": 2,
@@ -37,6 +37,6 @@
         "type": "single-stake",
         "asset": "wftm",
         "slug": "wftm",
-        "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+        "address": "0x04068da6c83afcfa0e13ba15a6696662335d5b75"
     }
 ]
