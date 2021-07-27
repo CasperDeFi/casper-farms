@@ -1,11 +1,8 @@
 import { useWallet } from 'use-wallet'
 import Web3 from 'web3'
+import { useState } from 'react'
 import poolAbi from '../data/pool-abi.json'
 import tokenAbi from '../data/token-abi.json'
-import { useState } from 'react'
-
-
-
 
 export default async function GetPendingRewards() {
     const wallet = useWallet()
@@ -42,12 +39,12 @@ export async function GetPendingRewardsUSD() {
         }
     }
 
-    const contractCASPER = new web3.eth.Contract(tokenAbi as any, "0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345")
-    const CasperPriceRequest = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=casper-defi&vs_currencies=usd")
+    const contractCASPER = new web3.eth.Contract(tokenAbi as any, '0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345')
+    const CasperPriceRequest = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=casper-defi&vs_currencies=usd')
     const CasperPriceResponse = await CasperPriceRequest.json()
-    const CasperPrice = CasperPriceResponse["casper-defi"]["usd"]
+    const CasperPrice = CasperPriceResponse['casper-defi'].usd
 
-    let casperValue = pendingCasper * CasperPrice
+    const casperValue = pendingCasper * CasperPrice
     casperValue.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
 
     return casperValue

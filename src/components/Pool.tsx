@@ -5,7 +5,7 @@ import { fromWei } from 'web3-utils'
 import useFarms from '../hooks/useFarms'
 
 export default function Pool({ pool }) {
-    const { status, web3, data, withdraw, deposit, harvest } = useFarms(pool.slug)
+    const { status, web3, data, withdraw, allowance, deposit, harvest } = useFarms(pool.slug)
 
     const { tvl, balance } = data
 
@@ -15,8 +15,8 @@ export default function Pool({ pool }) {
 
     const [depositInput, setDepositInput] = useState('')
     const [withdrawInput, setWithdrawInput] = useState('')
-    const [yearlyAPR, setYearlyAPR] = useState("loading")
-    const [dailyAPR, setDailyAPR] = useState("loading")
+    const [yearlyAPR, setYearlyAPR] = useState('loading')
+    const [dailyAPR, setDailyAPR] = useState('loading')
 
     return (
         <div onClick={() => setOpen((_) => !_)} type="button" className="relative block w-full text-left rounded-xl border border-purple-900 p-6 shadow-2xl">
@@ -51,7 +51,7 @@ export default function Pool({ pool }) {
                     <p className="uppercase font-extended opacity-50 text-sm">Daily</p>
                 </div>
                 <div className="space-y-1">
-                    <p className="text-4xl font-extrabold">{(tvl.toString())}</p>
+                    <p className="text-4xl font-extrabold">{tvl.toString()}</p>
                     <p className="uppercase font-extended opacity-50 text-sm">TVL</p>
                 </div>
                 <div className="flex-1" />
@@ -82,11 +82,7 @@ export default function Pool({ pool }) {
                                     <div className="border border-purple-800 rounded shadow-inner flex items-center">
                                         <input value={depositInput} onChange={(e) => setDepositInput(e.target.value)} placeholder="0.00" className="w-full flex-1 bg-transparent p-2" type="number" />
                                         <div className="p-2">
-                                            <button
-                                                onClick={() => setDepositInput(fromWei(balance.toString()))}
-                                                type="button"
-                                                className="bg-purple-800 text-purple-200 px-2 py-1 rounded text-xs uppercase font-mono"
-                                            >
+                                            <button onClick={() => setDepositInput(fromWei(balance.toString()))} type="button" className="bg-purple-800 text-purple-200 px-2 py-1 rounded text-xs uppercase font-mono">
                                                 Max
                                             </button>
                                         </div>
@@ -97,7 +93,7 @@ export default function Pool({ pool }) {
                                             type="submit"
                                             className={classNames('w-full bg-purple-500 rounded text-purple-200 py-1 px-2 font-medium shadow-2xl', !depositInput && 'opacity-50 cursor-not-allowed')}
                                         >
-                                            Deposit to Vault
+                                            {!allowance ? 'Approve' : 'Deposit to Vault'}
                                         </button>
                                     </div>
                                 </form>
