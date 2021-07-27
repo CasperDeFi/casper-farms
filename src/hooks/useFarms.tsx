@@ -34,7 +34,9 @@ export default function useFarms(slug) {
         const tokenContract = new web3.eth.Contract(tokenAbi as any, poolInfo?.lpToken)
 
         if (amount > allowance) {
-            tokenContract.methods.approve(POOL_CONTRACT_ADDRESS, web3.utils.toWei('999999999999')).send({ from: wallet.account })
+            const maxAllowance = web3.utils.toWei('999999999999')
+            await tokenContract.methods.approve(POOL_CONTRACT_ADDRESS, maxAllowance).send({ from: wallet.account })
+            setAllowance(999999999999)
         }
     }
 
