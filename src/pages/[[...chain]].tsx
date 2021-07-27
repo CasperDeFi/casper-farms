@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useWallet } from 'use-wallet'
+import { fromWei } from 'web3-utils'
 import Pool from '../components/Pool'
 import pools from '../data/pools.json'
 import ListBox from '../components/ListBox'
@@ -101,7 +102,7 @@ export default function IndexPage({ query }) {
                         <img className="block h-32" src="/img/casper-money.svg" alt="" />
                         <div>
                             <p className="font-extended uppercase">Pending Rewards</p>
-                            <p className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">{pendingCasper} CASPER</p>
+                            <p className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">{pendingCasper ? fromWei(pendingCasper) : 0} CASPER</p>
                             <p className="font-mono opacity-50 text-xl">~{pendingCasperUSD}</p>
                         </div>
                     </div>
