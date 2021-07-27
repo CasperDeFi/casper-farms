@@ -91,12 +91,12 @@ export default function IndexPage({ query }) {
                     <p className="font-extended uppercase">Total Value Locked</p>
                 </div>
 
-                <div className="flex flex-gap-6 flex-wrap items-center justify-center hide-scroll-bars">
+                {/* <div className="flex flex-gap-6 flex-wrap items-center justify-center hide-scroll-bars">
                     <ListBox label="Risk Level" data={people} value={selectedPerson} onChange={setSelectedPerson} />
                     <ListBox label="Type" data={people} value={selectedPerson} onChange={setSelectedPerson} />
                     <ListBox label="Asset" data={people} value={selectedPerson} onChange={setSelectedPerson} />
                     <ListBox label="Sort By" data={people} value={selectedPerson} onChange={setSelectedPerson} />
-                </div>
+                </div> */}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="bg-black bg-opacity-25 rounded-xl border border-yellow-400 shadow-2xl p-6 py-12 flex items-center justify-center space-x-6">
