@@ -3,7 +3,7 @@
         "id": 2,
         "name": "CASPER",
         "img": "https://i.imgur.com/DmVcyI2.png",
-        "risk": 2,
+        "risk": 1,
         "type": "single-stake",
         "asset": "casper",
         "slug": "casper"
@@ -25,5 +25,14 @@
         "type": "lp-stake",
         "asset": ["casper", "usdc"],
         "slug": "casper-usdc"
+    },
+    {
+        "id": 3,
+        "name": "FTM",
+        "img": "https://i.imgur.com/gGGoBUF.png",
+        "risk": 1,
+        "type": "single-stake",
+        "asset": "ftm",
+        "slug": "ftm"
     }
 ]
