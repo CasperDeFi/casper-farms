@@ -6,7 +6,8 @@
         "risk": 1,
         "type": "single-stake",
         "asset": "casper",
-        "slug": "casper"
+        "slug": "casper",
+        "address": "0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345"
     },
     {
         "id": 0,
@@ -15,7 +16,8 @@
         "risk": 2,
         "type": "lp-stake",
         "asset": ["casper", "ftm"],
-        "slug": "casper-ftm"
+        "slug": "casper-ftm",
+        "address": "0xca08C87466319F58660a439E46329D689718FefC"
     },
     {
         "id": 1,
@@ -24,15 +26,17 @@
         "risk": 2,
         "type": "lp-stake",
         "asset": ["casper", "usdc"],
-        "slug": "casper-usdc"
+        "slug": "casper-usdc",
+        "address": "0xdEA1B59D5749A22F768C2E1FD62557D05D45D0C2"
     },
     {
         "id": 3,
-        "name": "FTM",
+        "name": "WFTM",
         "img": "https://i.imgur.com/gGGoBUF.png",
         "risk": 1,
         "type": "single-stake",
-        "asset": "ftm",
-        "slug": "ftm"
+        "asset": "wftm",
+        "slug": "wftm",
+        "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
     }
 ]
