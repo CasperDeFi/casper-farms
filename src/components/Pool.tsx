@@ -54,15 +54,19 @@ export default function Pool({ pool }) {
                     <p className="text-4xl font-extrabold">{tvl.toString()}</p>
                     <p className="uppercase font-extended opacity-50 text-sm">TVL</p>
                 </div>
+                <div className="space-y-1">
+                    <p className="text-4xl font-extrabold">{data.fee}</p>
+                    <p className="uppercase font-extended opacity-50 text-sm">FEE</p>
+                </div>
                 <div className="flex-1" />
-                <div className="space-x-2">
+                {/* <div className="space-x-2">
                     <button type="button" className="bg-purple-500 rounded-2xl text-purple-200 text-2xl py-2 px-6 shadow-2xl">
                         Harvest
                     </button>
                     <button type="button" className="bg-purple-500 rounded-2xl text-purple-200 text-2xl py-2 px-6 shadow-2xl">
                         <i className={classNames('fas fa-arrow-down transition ease-in-out transform', open && '-rotate-180')} />
                     </button>
-                </div>
+                </div> */}
             </div>
             <AnimatePresence>
                 {open && (
