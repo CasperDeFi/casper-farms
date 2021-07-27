@@ -5,7 +5,9 @@ import { fromWei } from 'web3-utils'
 import useFarms from '../hooks/useFarms'
 
 export default function Pool({ pool }) {
-    const { balance, status, web3, data, withdraw, deposit, harvest } = useFarms(pool.slug)
+    const { status, web3, data, withdraw, deposit, harvest } = useFarms(pool.slug)
+
+    const { tvl, balance } = data
 
     useEffect(() => console.log(data), [data])
 
@@ -47,7 +49,7 @@ export default function Pool({ pool }) {
                     <p className="uppercase font-extended opacity-50 text-sm">Daily</p>
                 </div>
                 <div className="space-y-1">
-                    <p className="text-4xl font-extrabold">$12K</p>
+                    <p className="text-4xl font-extrabold">{fromWei(tvl.toString())}</p>
                     <p className="uppercase font-extended opacity-50 text-sm">TVL</p>
                 </div>
                 <div className="flex-1" />
@@ -78,13 +80,21 @@ export default function Pool({ pool }) {
                                     <div className="border border-purple-800 rounded shadow-inner flex items-center">
                                         <input value={depositInput} onChange={(e) => setDepositInput(e.target.value)} placeholder="0.00" className="w-full flex-1 bg-transparent p-2" type="number" />
                                         <div className="p-2">
-                                            <button type="button" className="bg-purple-800 text-purple-200 px-2 py-1 rounded text-xs uppercase font-mono">
+                                            <button
+                                                onClick={() => setDepositInput(parseFloat(fromWei(balance.toString())).toFixed(2))}
+                                                type="button"
+                                                className="bg-purple-800 text-purple-200 px-2 py-1 rounded text-xs uppercase font-mono"
+                                            >
                                                 Max
                                             </button>
                                         </div>
                                     </div>
                                     <div>
-                                        <button type="submit" className="w-full bg-purple-500 rounded text-purple-200 py-1 px-2 font-medium shadow-2xl">
+                                        <button
+                                            disabled={!depositInput}
+                                            type="submit"
+                                            className={classNames('w-full bg-purple-500 rounded text-purple-200 py-1 px-2 font-medium shadow-2xl', !depositInput && 'opacity-50 cursor-not-allowed')}
+                                        >
                                             Deposit to Vault
                                         </button>
                                     </div>
@@ -100,14 +110,24 @@ export default function Pool({ pool }) {
                                     <img className="w-16 mx-auto" src="/img/wallet-icon.svg" alt="" />
                                     <div className="border border-purple-800 rounded shadow-inner flex items-center">
                                         <input value={withdrawInput} onChange={(e) => setWithdrawInput(e.target.value)} placeholder="0.00" className="w-full flex-1 bg-transparent p-2" type="number" />
-                                        <div className="p-2">
-                                            <button type="button" className="bg-purple-800 text-purple-200 px-2 py-1 rounded text-xs uppercase font-mono">
-                                                Max
-                                            </button>
-                                        </div>
+                                        {data?.userInfo?.amount && (
+                                            <div className="p-2">
+                                                <button
+                                                    onClick={() => setWithdrawInput(fromWei(data?.userInfo?.amount))}
+                                                    type="button"
+                                                    className="bg-purple-800 text-purple-200 px-2 py-1 rounded text-xs uppercase font-mono"
+                                                >
+                                                    Max
+                                                </button>
+                                            </div>
+                                        )}
                                     </div>
                                     <div>
-                                        <button type="submit" className="w-full bg-purple-500 rounded text-purple-200 py-1 px-2 font-medium shadow-2xl">
+                                        <button
+                                            disabled={!withdrawInput}
+                                            type="submit"
+                                            className={classNames('w-full bg-purple-500 rounded text-purple-200 py-1 px-2 font-medium shadow-2xl', !withdrawInput && 'opacity-50 cursor-not-allowed')}
+                                        >
                                             Withdraw from Vault
                                         </button>
                                     </div>

@@ -16,6 +16,8 @@ export default function useFarms(slug) {
     const [poolInfo, setPoolInfo] = useState({})
     const [userInfo, setUserInfo] = useState({})
 
+    const [tvl, setTvl] = useState(0)
+
     const contract = new web3.eth.Contract(poolAbi as any, POOL_CONTRACT_ADDRESS)
 
     const pool = pools.find((pool) => pool.slug === slug)
@@ -47,10 +49,26 @@ export default function useFarms(slug) {
 
         try {
             const poolInfoFromWeb3 = await contract.methods.poolInfo(id).call()
-            setPoolInfo(poolInfoFromWeb3)
+            // setPoolInfo(poolInfoFromWeb3)
             const tokenContract = new web3.eth.Contract(tokenAbi as any, poolInfoFromWeb3.lpToken)
+            // const balanceFromWeb3 = await tokenContract.methods.balanceOf(wallet.account).call()
+            setTvl(balanceFromWeb3)
+        } catch (error) {
+            console.log(error)
+        }
+
+        try {
+            const poolInfoFromWeb3 = await contract.methods.poolInfo(id).call()
+            setPoolInfo(poolInfoFromWeb3)
+
+            const tokenContract = new web3.eth.Contract(tokenAbi as any, poolInfoFromWeb3.lpToken)
+
             const balanceFromWeb3 = await tokenContract.methods.balanceOf(wallet.account).call()
             setBalance(balanceFromWeb3)
+
+            const tvlFromWeb3 = await tokenContract.methods.balanceOf(POOL_CONTRACT_ADDRESS).call()
+
+            setTvl(tvlFromWeb3)
         } catch (error) {
             console.log(error)
         }
@@ -101,11 +119,16 @@ export default function useFarms(slug) {
 
     return {
         status,
-        balance,
         web3,
         contract,
         approve,
-        data: { ...pool, poolInfo, userInfo },
+        data: {
+            ...pool,
+            poolInfo,
+            userInfo,
+            tvl,
+            balance
+        },
         deposit,
         withdraw,
         harvest
