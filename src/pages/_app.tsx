@@ -1,6 +1,7 @@
 import '../styles/global.css'
 import Head from 'next/head'
 import { UseWalletProvider } from 'use-wallet'
+import { GeistProvider, CssBaseline } from '@geist-ui/react'
 
 export default function App({ Component, pageProps }) {
     return (
@@ -14,9 +15,11 @@ export default function App({ Component, pageProps }) {
                     referrerPolicy="no-referrer"
                 />
             </Head>
+            <GeistProvider>
             <UseWalletProvider chainId={250}>
                 <Component {...pageProps} />
             </UseWalletProvider>
+            </GeistProvider>
         </>
     )
 }

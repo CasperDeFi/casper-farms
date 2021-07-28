@@ -88,6 +88,7 @@ export default function IndexPage({ query }) {
                 <div className="text-center space-y-2">
                     <p className="text-4xl md:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">{tvl}</p>
                     <p className="font-extended uppercase">Total Value Locked</p>
+                    <p className="text-1xl md:text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-blue-400 via-green-400 to-blue-500">Casper Price - 2.10</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -121,3 +122,5 @@ export default function IndexPage({ query }) {
         </>
     )
 }
+
+  
