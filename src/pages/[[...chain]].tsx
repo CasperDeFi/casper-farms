@@ -1,14 +1,13 @@
+import axios from 'axios'
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import { useWallet } from 'use-wallet'
 import { fromWei } from 'web3-utils'
 import Pool from '../components/Pool'
 import pools from '../data/pools.json'
-import ListBox from '../components/ListBox'
-import ChainPicker from '../components/ChainPicker'
-import useTVL from '../helpers/useTVL'
 import GetPendingRewards, { GetPendingRewardsUSD } from '../helpers/getPendingRewards'
+import useTVL from '../helpers/useTVL'
 
 const people = [
     { key: 'Durward Reynolds', value: false },
@@ -18,11 +17,12 @@ const people = [
     { key: 'Katelyn Rohan', value: false }
 ]
 
-export function getServerSideProps(context) {
-    return { props: { query: context.query } }
+export async function getServerSideProps(context) {
+    const { data } = await axios.get('https://api.casperdefi.com/v1/tokens/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345?chainId=250&exchange=spirit')
+    return { props: { query: context.query, casperPrice: data.data.token.priceUSD } }
 }
 
-export default function IndexPage({ query }) {
+export default function IndexPage({ query, casperPrice }) {
     const wallet = useWallet()
     const router = useRouter()
 
@@ -88,7 +88,17 @@ export default function IndexPage({ query }) {
                 <div className="text-center space-y-2">
                     <p className="text-4xl md:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">{tvl}</p>
                     <p className="font-extended uppercase">Total Value Locked</p>
-                    <p className="text-1xl md:text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-blue-400 via-green-400 to-blue-500">Casper Price - 2.10</p>
+                    <p className="text-1xl md:text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-blue-400 via-green-400 to-blue-500">CASPER Token: ${parseFloat(casperPrice).toFixed(2)}</p>
+                    <p>
+                        <a
+                            href="https://swap.spiritswap.finance/#/swap?outputCurrency=0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="font-mono opacity-50 text-xs underline hover:no-underline"
+                        >
+                            Purchase Casper
+                        </a>
+                    </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -122,5 +132,3 @@ export default function IndexPage({ query }) {
         </>
     )
 }
-
-  
