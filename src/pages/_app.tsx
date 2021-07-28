@@ -16,6 +16,7 @@ export default function App({ Component, pageProps }) {
                 />
                 <link rel="shortcut icon" href="/img/casper.png" />
                 <title>Casper Farms</title>
+                <script data-token="8NMB7FECTW1K" async src="https://cdn.splitbee.io/sb.js"></script>
             </Head>
             <GeistProvider>
             <UseWalletProvider chainId={250}>
