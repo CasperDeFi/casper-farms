@@ -14,6 +14,8 @@ export default function App({ Component, pageProps }) {
                     crossOrigin="anonymous"
                     referrerPolicy="no-referrer"
                 />
+                <link rel="shortcut icon" href="/img/casper.png" />
+                <title>Casper Farms</title>
             </Head>
             <GeistProvider>
             <UseWalletProvider chainId={250}>
