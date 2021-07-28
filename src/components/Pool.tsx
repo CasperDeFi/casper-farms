@@ -84,7 +84,16 @@ export default function Pool({ pool }) {
                                 <form
                                     onSubmit={(e) => {
                                         e.preventDefault()
-                                        deposit(web3.utils.toWei(depositInput))
+                                        if(pool.id == 4){
+                                            deposit(web3.utils.toWei(depositInput, 'mwei'))
+                                            console.log(depositInput)
+
+                                        }else{
+                                            deposit(web3.utils.toWei(depositInput))
+                                            console.log("654654654")
+
+
+                                        }
                                     }}
                                     className="border-b md:border-b-0 md:border-r border-purple-900 p-6 space-y-4"
                                 >

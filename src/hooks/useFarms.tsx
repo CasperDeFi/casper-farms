@@ -39,6 +39,9 @@ export default function useFarms(slug) {
             const maxAllowance = web3.utils.toWei('999999999999')
             await tokenContract.methods.approve(POOL_CONTRACT_ADDRESS, maxAllowance).send({ from: wallet.account })
             setAllowance(999999999999)
+            if(id == 4){
+                setAllowance(9999999999)
+            }
         }
     }
 
@@ -59,7 +62,11 @@ export default function useFarms(slug) {
 
             const tokenContract = new web3.eth.Contract(tokenAbi as any, poolInfoFromWeb3.lpToken)
 
-            const balanceFromWeb3 = await tokenContract.methods.balanceOf(wallet.account).call()
+            let balanceFromWeb3 = await tokenContract.methods.balanceOf(wallet.account).call()
+
+            if (id == 4){
+                balanceFromWeb3 = web3.utils.toWei(balanceFromWeb3, 'micro')
+            }
             setBalance(balanceFromWeb3)
 
             const allowanceFromWeb3 = await tokenContract.methods.allowance(wallet.account, POOL_CONTRACT_ADDRESS).call()
@@ -222,12 +229,13 @@ export default function useFarms(slug) {
                 break
             case 4:
                 const balanceUSDCMasterchef = await contractUSDC.methods.balanceOf(casperMasterChef).call()
-                const pool4TVL = parseFloat(web3Default.utils.fromWei(balanceUSDCMasterchef))
+                const pool4TVL = 1000000000000 * parseFloat(web3Default.utils.fromWei(balanceUSDCMasterchef))
                 const prettyTVL4 = pool4TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+                console.log('USDTVL',pool4TVL)
                 setTvl(prettyTVL4)
 
-                const yearly4 = (5345 * CasperPrice / pool3TVL * 100)
-                const daily4 = yearly3 / 356
+                const yearly4 = (5345 * CasperPrice / pool4TVL * 100)
+                const daily4 = yearly4 / 356
                 const yearlyFormatted4 = yearly4.toFixed(2).toLocaleString()
                 const dailyFormatted4 = daily4.toFixed(2).toLocaleString()
                 setYearlyAPR(yearlyFormatted4)
@@ -253,7 +261,7 @@ export default function useFarms(slug) {
             case 6:
                 const balancePool6 = await contractPool6.methods.balanceOf(casperMasterChef).call()
                 const totalSupply6 = await contractPool6.methods.totalSupply().call()
-                const balanceCasper6 = await contractCASPER.methods.balanceOf(casperSpiritLPAddress).call()
+                const balanceCasper6 = await contractCASPER.methods.balanceOf(casperGrimLPAddress).call()
                 const balanceCasperFormatted6 = web3Default.utils.fromWei(balanceCasper6)
                 const ratio6 = balancePool6 / totalSupply6
                 const pool6TVL = parseFloat(balanceCasperFormatted6) * ratio6 * 2 * CasperPrice

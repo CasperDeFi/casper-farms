@@ -104,7 +104,7 @@
         "asset": "spirit",
         "slug": "spirit",
         "address": "0x5cc61a78f164885776aa610fb0fe1257df78e59b",
-        "fee": "0%",
+        "fee": "2%",
         "multiplier": "0.5x",
         "isSingleToken": "true"
     }
