@@ -10,7 +10,8 @@
         "address": "0xca08C87466319F58660a439E46329D689718FefC",
         "fee": "0%",
         "multiplier": "0.5x",
-        "lpLink": "https://swap.spiritswap.finance/#/add/FTM/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345"
+        "lpLink": "https://swap.spiritswap.finance/#/add/FTM/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345",
+        "isSingleToken": "false"
     },
     {
         "id": 1,
@@ -22,7 +23,8 @@
         "slug": "casper",
         "address": "0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345",
         "fee": "0%",
-        "multiplier": "0.5x"
+        "multiplier": "0.5x",
+        "isSingleToken": "true"
     },
     {
         "id": 2,
@@ -35,7 +37,8 @@
         "address": "0xdEA1B59D5749A22F768C2E1FD62557D05D45D0C2",
         "fee": "0%",
         "multiplier": "2x",
-        "lpLink" : "https://swap.spiritswap.finance/#/add/0x04068DA6C83AFCFA0e13ba15A6696662335D5B75/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345"
+        "lpLink" : "https://swap.spiritswap.finance/#/add/0x04068DA6C83AFCFA0e13ba15A6696662335D5B75/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345",
+        "isSingleToken": "false"
     },
     {
         "id": 3,
@@ -47,6 +50,7 @@
         "slug": "wftm",
         "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83",
         "fee": "5%",
-        "multiplier": "0.1x"
+        "multiplier": "0.1x",
+        "isSingleToken": "true"
     }
 ]
