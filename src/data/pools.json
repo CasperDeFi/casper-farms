@@ -52,5 +52,60 @@
         "fee": "5%",
         "multiplier": "0.1x",
         "isSingleToken": "true"
+    },
+    {
+        "id": 4,
+        "name": "USDC",
+        "img": "https://i.imgur.com/gGGoBUF.png",
+        "risk": 1,
+        "type": "single-stake",
+        "asset": "usdc",
+        "slug": "usdc",
+        "address": "0x04068da6c83afcfa0e13ba15a6696662335d5b75",
+        "fee": "5%",
+        "multiplier": "0.1x",
+        "isSingleToken": "true",
+        "lpLink" : " "
+    },
+    {
+        "id": 5,
+        "name": "CASPER-SPIRIT LP",
+        "img": "https://i.imgur.com/gGGoBUF.png",
+        "risk": 2,
+        "type": "lp-stake",
+        "asset": ["casper", "spirit"],
+        "slug": "casper-spirit",
+        "address": "0x9f5182fEfA4092cA11F9DBeb383f314B6D3381D0",
+        "fee": "0%",
+        "multiplier": "2x",
+        "lpLink" : " ",
+        "isSingleToken": "false"
+    },
+    {
+        "id": 6,
+        "name": "CASPER-GRIM LP",
+        "img": "https://i.imgur.com/gGGoBUF.png",
+        "risk": 2,
+        "type": "lp-stake",
+        "asset": ["casper", "grim"],
+        "slug": "casper-grim",
+        "address": "0xC6Ec0bd31BC934addd12d587b48455F2b25BcACB",
+        "fee": "0%",
+        "multiplier": "2x",
+        "lpLink" : " ",
+        "isSingleToken": "false"
+    },
+    {
+        "id": 7,
+        "name": "SPIRIT",
+        "img": "https://i.imgur.com/DmVcyI2.png",
+        "risk": 1,
+        "type": "single-stake",
+        "asset": "spirit",
+        "slug": "spirit",
+        "address": "0x5cc61a78f164885776aa610fb0fe1257df78e59b",
+        "fee": "0%",
+        "multiplier": "0.5x",
+        "isSingleToken": "true"
     }
 ]
