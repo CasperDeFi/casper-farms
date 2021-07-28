@@ -9,7 +9,8 @@
         "slug": "casper-ftm",
         "address": "0xca08C87466319F58660a439E46329D689718FefC",
         "fee": "0%",
-        "multiplier": "0.5x"
+        "multiplier": "0.5x",
+        "lpLink": "https://swap.spiritswap.finance/#/add/FTM/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345"
     },
     {
         "id": 1,
@@ -33,7 +34,8 @@
         "slug": "casper-usdc",
         "address": "0xdEA1B59D5749A22F768C2E1FD62557D05D45D0C2",
         "fee": "0%",
-        "multiplier": "2x"
+        "multiplier": "2x",
+        "lpLink" : "https://swap.spiritswap.finance/#/add/0x04068DA6C83AFCFA0e13ba15A6696662335D5B75/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345"
     },
     {
         "id": 3,
