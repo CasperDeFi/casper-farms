@@ -56,7 +56,7 @@
     {
         "id": 4,
         "name": "USDC",
-        "img": "https://i.imgur.com/gGGoBUF.png",
+        "img": "https://i.imgur.com/ihfEBFh.png",
         "risk": 1,
         "type": "single-stake",
         "asset": "usdc",
@@ -70,7 +70,7 @@
     {
         "id": 5,
         "name": "CASPER-SPIRIT LP",
-        "img": "https://i.imgur.com/gGGoBUF.png",
+        "img": "https://i.imgur.com/phVIIAx.png",
         "risk": 2,
         "type": "lp-stake",
         "asset": ["casper", "spirit"],
@@ -84,7 +84,7 @@
     {
         "id": 6,
         "name": "CASPER-GRIM LP",
-        "img": "https://i.imgur.com/gGGoBUF.png",
+        "img": "https://i.imgur.com/dC7zOVB.png",
         "risk": 2,
         "type": "lp-stake",
         "asset": ["casper", "grim"],
@@ -98,7 +98,7 @@
     {
         "id": 7,
         "name": "SPIRIT",
-        "img": "https://i.imgur.com/DmVcyI2.png",
+        "img": "https://i.imgur.com/NKkrKA1.png",
         "risk": 1,
         "type": "single-stake",
         "asset": "spirit",
