@@ -27,10 +27,16 @@ export default function Pool({ pool }) {
             <div className="bg-purple-600 border-2 border-purple-800 rounded shadow-2xl text-purple-200 text-xs font-mono px-2 py-1 absolute top-0 left-0 transform -translate-x-2 -translate-y-2">
                 <p>{data.multiplier}</p>
             </div>
+
             <div className="flex flex-gap-6 md:flex-gap-12 flex-wrap items-center">
                 <div className="rounded-2xl shadow-2xl h-20 w-20 bg-center bg-cover" style={{ backgroundImage: `url("${pool.img}")` }} />
                 <div>
-                    <p className="font-extended">{pool.name}</p>
+                    <p className="flex space-x-1">
+                        <span className="font-extended">{pool.name}</span>
+                        <a href={pool.lpLink} target="_blank" className="text-xs font-mono opacity-50 underline hover:no-underline" rel="noreferrer">
+                            Get LP
+                        </a>
+                    </p>
                     <div className="flex flex-gap-6">
                         <div className="space-y-1">
                             <p className="text-2xl font-extrabold">{parseFloat(fromWei(balance.toString())).toFixed(2)}</p>
