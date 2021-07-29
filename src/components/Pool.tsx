@@ -3,11 +3,16 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { fromWei } from 'web3-utils'
 import useFarms from '../hooks/useFarms'
+import { useWallet } from 'use-wallet'
+import { userInfo } from 'os'
 
 export default function Pool({ pool }) {
     const { status, web3, data, withdraw, allowance, deposit, harvest } = useFarms(pool.slug)
 
     const { tvl, balance, yearlyAPR, dailyAPR } = data
+
+    const wallet = useWallet()
+
 
     // useEffect(() => console.log(data), [data])
 
@@ -16,6 +21,9 @@ export default function Pool({ pool }) {
     const [depositInput, setDepositInput] = useState('')
     const [withdrawInput, setWithdrawInput] = useState('')
 
+    const [deposited, setDespisted] = useState("0")
+
+    console.log(pool.id,':',data?.userInfo?.amount)
 
 
     return (
@@ -45,7 +53,7 @@ export default function Pool({ pool }) {
                             <p className="uppercase text-xs font-extended opacity-50">Balance</p>
                         </div>
                         <div className="space-y-1">
-                            <p className="text-2xl font-extrabold">{data?.userInfo?.amount ? parseFloat(fromWei(data?.userInfo?.amount)).toFixed(2) : 'XX'}</p>
+                            <p className="text-2xl font-extrabold">{data?.userInfo?.amount ? parseFloat(fromWei( data?.userInfo?.amount)).toFixed(2) : 'XX'}</p>
                             <p className="uppercase text-xs font-extended opacity-50">Deposited</p>
                         </div>
                     </div>

@@ -49,7 +49,13 @@ export default function useFarms(slug) {
         if (!wallet.account) return
         setStatus('loading')
         try {
-            const userInfoFromWeb3 = await contract.methods.userInfo(id, wallet.account).call()
+            let userInfoFromWeb3 = await contract.methods.userInfo(id, wallet.account).call()
+            let usdc = userInfoFromWeb3.amount
+
+            if(id ==4 ){
+                userInfoFromWeb3.amount = web3.utils.toWei(usdc, 'micro')
+
+            }
             setUserInfo(userInfoFromWeb3)
         } catch (error) {
             console.log(error)
