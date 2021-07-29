@@ -58,7 +58,7 @@ export default function useFarms(slug) {
         try {
             const poolInfoFromWeb3 = await contract.methods.poolInfo(id).call()
             setPoolInfo(poolInfoFromWeb3)
-            console.log('info', id, poolInfoFromWeb3)
+            // console.log('info', id, poolInfoFromWeb3)
 
             const tokenContract = new web3.eth.Contract(tokenAbi as any, poolInfoFromWeb3.lpToken)
 
@@ -231,7 +231,6 @@ export default function useFarms(slug) {
                 const balanceUSDCMasterchef = await contractUSDC.methods.balanceOf(casperMasterChef).call()
                 const pool4TVL = 1000000000000 * parseFloat(web3Default.utils.fromWei(balanceUSDCMasterchef))
                 const prettyTVL4 = pool4TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
-                console.log('USDTVL',pool4TVL)
                 setTvl(prettyTVL4)
 
                 const yearly4 = (5345 * CasperPrice / pool4TVL * 100)
@@ -252,9 +251,9 @@ export default function useFarms(slug) {
                 const prettyTVL5 = pool5TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL5)
                 const yearly5 = (106902 * CasperPrice / pool5TVL * 100)
-                const daily5 = yearly / 356
+                const daily5 = yearly5 / 356
                 const yearlyFormatted5 = yearly5.toFixed().toLocaleString()
-                const dailyFormatted5 = daily5.toFixed(2).toLocaleString()
+                const dailyFormatted5 = daily5.toFixed().toLocaleString()
                 setYearlyAPR(yearlyFormatted5)
                 setDailyAPR(dailyFormatted5)
                 break
@@ -269,7 +268,7 @@ export default function useFarms(slug) {
                 const prettyTVL6 = pool6TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL6)
                 const yearly6 = (10690 * CasperPrice / pool6TVL * 100)
-                const daily6 = yearly / 356
+                const daily6 = yearly6 / 356
                 const yearlyFormatted6 = yearly6.toFixed().toLocaleString()
                 const dailyFormatted6 = daily6.toFixed(2).toLocaleString()
                 setYearlyAPR(yearlyFormatted6)

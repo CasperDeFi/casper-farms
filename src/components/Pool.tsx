@@ -16,6 +16,8 @@ export default function Pool({ pool }) {
     const [depositInput, setDepositInput] = useState('')
     const [withdrawInput, setWithdrawInput] = useState('')
 
+
+
     return (
         <div onClick={() => setOpen((_) => !_)} type="button" className="relative block w-full text-left rounded-xl border border-purple-900 p-6 shadow-2xl">
             {status === 'loading' && (
