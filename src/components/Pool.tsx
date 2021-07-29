@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { fromWei } from 'web3-utils'
 import useFarms from '../hooks/useFarms'
-import { useWallet } from 'use-wallet'
 import { userInfo } from 'os'
 
 export default function Pool({ pool }) {
@@ -11,7 +10,6 @@ export default function Pool({ pool }) {
 
     const { tvl, balance, yearlyAPR, dailyAPR } = data
 
-    const wallet = useWallet()
 
 
     // useEffect(() => console.log(data), [data])
@@ -21,9 +19,7 @@ export default function Pool({ pool }) {
     const [depositInput, setDepositInput] = useState('')
     const [withdrawInput, setWithdrawInput] = useState('')
 
-    const [deposited, setDespisted] = useState("0")
 
-    console.log(pool.id,':',data?.userInfo?.amount)
 
 
     return (
