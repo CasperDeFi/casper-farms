@@ -1,5 +1,16 @@
 node_modules
 .vercel
 .next
-.vercel
+
+# env parameters
+.env
+
+# yarn 
+.yarn-cache
+yarn-error.log
+
+# don't install lockfile if someone installs with npm
+package-lock.json
+npm-debug.log*
+
 .DS_Store
