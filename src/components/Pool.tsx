@@ -86,13 +86,9 @@ export default function Pool({ pool }) {
                                         e.preventDefault()
                                         if(pool.id == 4){
                                             deposit(web3.utils.toWei(depositInput, 'mwei'))
-                                            console.log(depositInput)
 
                                         }else{
                                             deposit(web3.utils.toWei(depositInput))
-                                            console.log("654654654")
-
-
                                         }
                                     }}
                                     className="border-b md:border-b-0 md:border-r border-purple-900 p-6 space-y-4"
@@ -102,7 +98,8 @@ export default function Pool({ pool }) {
                                     <div className="border border-purple-800 rounded shadow-inner flex items-center">
                                         <input value={depositInput} onChange={(e) => setDepositInput(e.target.value)} placeholder="0.00" className="w-full flex-1 bg-transparent p-2" type="number" />
                                         <div className="p-2">
-                                            <button onClick={() => setDepositInput(fromWei(balance.toString()))} type="button" className="bg-purple-800 text-purple-200 px-2 py-1 rounded text-xs uppercase font-mono">
+                                            <button onClick={() => 
+                                                setDepositInput(fromWei(balance.toString()))} type="button" className="bg-purple-800 text-purple-200 px-2 py-1 rounded text-xs uppercase font-mono">
                                                 Max
                                             </button>
                                         </div>
@@ -121,6 +118,12 @@ export default function Pool({ pool }) {
                                     onSubmit={(e) => {
                                         e.preventDefault()
                                         withdraw(web3.utils.toWei(withdrawInput))
+                                        if(pool.id == 4){
+                                            withdraw(web3.utils.toWei(withdrawInput, 'mwei'))
+
+                                        }else{
+                                            withdraw(web3.utils.toWei(withdrawInput))
+                                        }
                                     }}
                                     className="border-b md:border-b-0 md:border-r border-purple-900 p-6 space-y-4"
                                 >
@@ -131,7 +134,15 @@ export default function Pool({ pool }) {
                                         {data?.userInfo?.amount && (
                                             <div className="p-2">
                                                 <button
-                                                    onClick={() => setWithdrawInput(fromWei(data?.userInfo?.amount))}
+                                                    onClick={() => {
+                                                        setWithdrawInput(fromWei(data?.userInfo?.amount))
+                                                        if(pool.id == 4){
+                                                            setWithdrawInput(fromWei(data?.userInfo?.amount, 'mwei'))
+                                                        }
+                                                    
+                                                    }
+                                                
+                                                }
                                                     type="button"
                                                     className="bg-purple-800 text-purple-200 px-2 py-1 rounded text-xs uppercase font-mono"
                                                 >
