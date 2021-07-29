@@ -65,7 +65,7 @@
         "fee": "5%",
         "multiplier": "0.1x",
         "isSingleToken": "true",
-        "lpLink" : " "
+        "lpLink" : "https://swap.spiritswap.finance/#/swap"
     },
     {
         "id": 5,
@@ -78,7 +78,7 @@
         "address": "0x9f5182fEfA4092cA11F9DBeb383f314B6D3381D0",
         "fee": "0%",
         "multiplier": "2x",
-        "lpLink" : " ",
+        "lpLink" : "https://swap.spiritswap.finance/#/add/0x5Cc61A78F164885776AA610fb0FE1257df78E59B/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345",
         "isSingleToken": "false"
     },
     {
@@ -92,7 +92,7 @@
         "address": "0xC6Ec0bd31BC934addd12d587b48455F2b25BcACB",
         "fee": "0%",
         "multiplier": "2x",
-        "lpLink" : " ",
+        "lpLink" : "https://swap.spiritswap.finance/#/add/0x7ec94c4327dc757601b4273cd67014d7760be97e/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345",
         "isSingleToken": "false"
     },
     {
@@ -106,6 +106,7 @@
         "address": "0x5cc61a78f164885776aa610fb0fe1257df78e59b",
         "fee": "2%",
         "multiplier": "0.5x",
-        "isSingleToken": "true"
+        "isSingleToken": "true",
+        "lpLink" : "https://swap.spiritswap.finance/#/swap"
     }
 ]
