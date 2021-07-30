@@ -6,8 +6,11 @@ import { useWallet } from 'use-wallet'
 import { fromWei } from 'web3-utils'
 import Pool from '../components/Pool'
 import pools from '../data/pools.json'
-import GetPendingRewards, { GetPendingRewardsUSD } from '../helpers/getPendingRewards'
 import useTVL from '../helpers/useTVL'
+
+import getTotalReward from '../helpers/getPendingRewards'
+
+
 
 const people = [
     { key: 'Durward Reynolds', value: false },
@@ -18,21 +21,39 @@ const people = [
 ]
 
 export async function getServerSideProps(context) {
-    const { data } = await axios.get('https://api.casperdefi.com/v1/tokens/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345?chainId=250&exchange=spirit')
-    return { props: { query: context.query, casperPrice: data.data.token.priceUSD } }
+    try{
+        const { data } = await axios.get('https://api.casperdefi.com/v1/tokens/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345?chainId=250&exchange=spirit')
+        return { props: { query: context.query, casperPrice: data.data.token.priceUSD } }
+    }
+    catch{
+        return { props: { query: context.query, casperPrice: 'loading' } }
+
+    }
 }
 
 export default function IndexPage({ query, casperPrice }) {
     const wallet = useWallet()
     const router = useRouter()
 
+    useEffect(() => {
+        try{
+            if(window.ethereum){
+                wallet.connect()
+            }
+        }
+
+        catch{
+
+        }
+   }, []);
+
     const [chain, setChain] = useState(query?.chain?.[0] || 'FTM')
     const [showChainPicker, setShowChainPicker] = useState(false)
     const [selectedPerson, setSelectedPerson] = useState(people[0])
     const [tvl, setTvl] = useState('loading')
-    const [pendingCasper, setPendingCasper] = useState(0)
-    const [pendingCasperUSD, setPendingCasperUSD] = useState(0)
-    const [userDepositUSD, setUserDepositUSD] = useState('Coming soon')
+    const [pendingCasper, setPendingCasper] = useState("0")
+    const [pendingCasperUSD, setPendingCasperUSD] = useState("Coming Soon")
+    const [userDepositUSD, setUserDepositUSD] = useState('Coming Soon')
 
     useEffect(() => {
         router.push(`/${chain}`, undefined, { shallow: true })
@@ -41,20 +62,19 @@ export default function IndexPage({ query, casperPrice }) {
     const getTVL = async () => {
         const temp = await useTVL()
         setTvl(temp.toLocaleString('en-US', { style: 'currency', currency: 'USD' }))
+
+        // if(wallet.account){
+        //     const rewardTotal = await getTotalReward()
+        //     setPendingCasper(rewardTotal)
+        // }
+
     }
     getTVL()
 
-    const getPendingRewards = async () => {
-        const temp = await GetPendingRewards()
-        setPendingCasper(temp)
-    }
-    getPendingRewards()
 
-    const getPendingRewardsUSD = async () => {
-        const temp = await GetPendingRewardsUSD()
-        setPendingCasperUSD(temp)
-    }
-    getPendingRewardsUSD()
+
+
+
 
     return (
         <>
@@ -106,14 +126,16 @@ export default function IndexPage({ query, casperPrice }) {
                         <img className="block h-32" src="/img/casper-money.svg" alt="" />
                         <div>
                             <p className="font-extended uppercase">My Total Deposit</p>
-                            <p className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">{userDepositUSD}</p>
+                            <p className="font-mono opacity-50 text-xl">~{pendingCasperUSD}</p>
+                            {/* <p className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">{userDepositUSD}</p> */}
                         </div>
                     </div>
                     <div className="bg-black bg-opacity-25 rounded-xl border border-yellow-400 shadow-2xl p-6 py-12 flex items-center justify-center space-x-6">
                         <img className="block h-32" src="/img/casper-money.svg" alt="" />
                         <div>
                             <p className="font-extended uppercase">Pending Rewards</p>
-                            <p className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">{pendingCasper ? fromWei(pendingCasper) : 0} CASPER</p>
+                            {/* <p className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">{pendingCasper ? pendingCasper : 0} CASPER</p> */}
+                            {/* <p className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">{pendingCasper}</p> */}
                             <p className="font-mono opacity-50 text-xl">~{pendingCasperUSD}</p>
                         </div>
                     </div>

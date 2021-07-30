@@ -16,8 +16,8 @@ export default function Pool({ pool }) {
 
     const [open, setOpen] = useState(false)
 
-    const [depositInput, setDepositInput] = useState('')
-    const [withdrawInput, setWithdrawInput] = useState('')
+    const [depositInput, setDepositInput] = useState('0')
+    const [withdrawInput, setWithdrawInput] = useState('0')
 
 
 
@@ -123,7 +123,7 @@ export default function Pool({ pool }) {
                                 <form
                                     onSubmit={(e) => {
                                         e.preventDefault()
-                                        withdraw(web3.utils.toWei(withdrawInput))
+
                                         if(pool.id == 4){
                                             withdraw(web3.utils.toWei(withdrawInput, 'mwei'))
 
@@ -142,10 +142,6 @@ export default function Pool({ pool }) {
                                                 <button
                                                     onClick={() => {
                                                         setWithdrawInput(fromWei(data?.userInfo?.amount))
-                                                        if(pool.id == 4){
-                                                            setWithdrawInput(fromWei(data?.userInfo?.amount, 'mwei'))
-                                                        }
-                                                    
                                                     }
                                                 
                                                 }
@@ -172,7 +168,7 @@ export default function Pool({ pool }) {
                                     <div className="flex items-center space-x-4">
                                         <img className="w-16" src="/img/casper-money.svg" alt="" />
                                         <p className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-blue-400 via-yellow-400 to-green-500">
-                                            {parseFloat(fromWei(data?.userInfo?.rewardDebt)).toFixed(2) || 'XX'}
+                                            {parseFloat(fromWei(data?.pendingCASPER)).toFixed(9) || 'XX'}
                                         </p>
                                     </div>
                                     <div className="flex-1" />

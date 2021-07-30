@@ -9,15 +9,18 @@ export default function useFarms(slug) {
     const wallet = useWallet()
     const web3 = new Web3(wallet.ethereum)
 
+
     const POOL_CONTRACT_ADDRESS = '0xaD580d9b5C9c043325b3D8C33B1166B8f8E93E74'
 
     const [balance, setBalance] = useState(0)
     const [status, setStatus] = useState('loading')
     const [poolInfo, setPoolInfo] = useState({})
     const [userInfo, setUserInfo] = useState({})
+    const [pendingCASPER, setPendingCASPER] = useState('-')
     const [allowance, setAllowance] = useState(0)
     const [yearlyAPR, setYearlyAPR] = useState('loading')
     const [dailyAPR, setDailyAPR] = useState('loading')
+    const [pending, setPending] = useState(0)
 
     const [tvl, setTvl] = useState('0')
 
@@ -25,6 +28,7 @@ export default function useFarms(slug) {
 
     const pool = pools.find((pool) => pool.slug === slug)
     const { id } = pool
+
 
     const approve = async (amount) => {
         // @ts-ignore
@@ -54,9 +58,12 @@ export default function useFarms(slug) {
 
             if(id ==4 ){
                 userInfoFromWeb3.amount = web3.utils.toWei(usdc, 'micro')
-
             }
             setUserInfo(userInfoFromWeb3)
+
+            let pendingRewards = await contract.methods.pendingCASPER(id, wallet.account).call()
+            setPendingCASPER(pendingRewards)
+
         } catch (error) {
             console.log(error)
         }
@@ -304,12 +311,12 @@ export default function useFarms(slug) {
     const getPendingRewards = async () => {
         let pending = 0
         if (wallet.account) {
-            for (let pid = 0; pid < 4; pid++) {
+            for (let pid = 0; pid < 7; pid++) {
                 const pendingReward = await contract.methods.pendingCASPER(pid, wallet.account).call()
                 pending += pendingReward
             }
         }
-        return pending
+        setPending(pending)
     }
 
     return {
@@ -325,7 +332,9 @@ export default function useFarms(slug) {
             tvl,
             balance,
             dailyAPR,
-            yearlyAPR
+            yearlyAPR,
+            pendingCASPER,
+            pending
         },
         deposit,
         withdraw,

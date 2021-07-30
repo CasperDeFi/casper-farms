@@ -78,5 +78,6 @@ export default async function useTVL() {
     tvl = pool0TVL + pool1TVL + pool2TVL + pool3TVL + pool4TVL + pool5TVL + pool6TVL + pool7TVL
     tvl.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
 
+
     return tvl
 }
