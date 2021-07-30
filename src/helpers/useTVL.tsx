@@ -20,7 +20,7 @@ export default async function useTVL() {
     const contractWFTM = new web3Default.eth.Contract(tokenAbi as any, '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83')
     let wftmPrice
     try{
-        const { data } = await axios.get('https://api.casperdefi.com/v1/tokens/0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83?chainId=250&exchange=spirit')
+        const { data } = await axios.get('https://cors-anywhere.herokuapp.com/https://api.casperdefi.com/v1/tokens/0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83?chainId=250&exchange=spirit')
         wftmPrice = parseFloat(data.data.token.priceUSD).toFixed(5)
     }catch{}
     const FTMPrice = wftmPrice
@@ -28,14 +28,14 @@ export default async function useTVL() {
     const contractCASPER = new web3Default.eth.Contract(tokenAbi as any, '0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345')
     let CasperPrice
     try{
-        const { data } = await axios.get('https://api.casperdefi.com/v1/tokens/0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345?chainId=250&exchange=spirit')
+        const { data } = await axios.get('https://cors-anywhere.herokuapp.com/https://api.casperdefi.com/v1/tokens/0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345?chainId=250&exchange=spirit')
         CasperPrice = parseFloat(data.data.token.priceUSD).toFixed(5)
     }catch{}
 
     const contractSpirit = new web3Default.eth.Contract(tokenAbi as any, spiritAddress)
     let spiritPrice;
     try{
-        const { data } = await axios.get('https://api.casperdefi.com/v1/tokens/0x5cc61a78f164885776aa610fb0fe1257df78e59b?chainId=250&exchange=spirit')
+        const { data } = await axios.get('https://cors-anywhere.herokuapp.com/https://api.casperdefi.com/v1/tokens/0x5cc61a78f164885776aa610fb0fe1257df78e59b?chainId=250&exchange=spirit')
         spiritPrice = parseFloat(data.data.token.priceUSD).toFixed(5)
     }catch{}
 

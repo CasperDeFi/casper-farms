@@ -150,7 +150,7 @@ export default function useFarms(slug) {
         const contractWFTM = new web3Default.eth.Contract(tokenAbi as any, '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83')
         let wftmPrice
         try{
-            const { data } = await axios.get('https://api.casperdefi.com/v1/tokens/0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83?chainId=250&exchange=spirit')
+            const { data } = await axios.get('https://cors-anywhere.herokuapp.com/https://api.casperdefi.com/v1/tokens/0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83?chainId=250&exchange=spirit')
             wftmPrice = parseFloat(data.data.token.priceUSD).toFixed(5)
         }catch{}
         const FTMPrice = wftmPrice
