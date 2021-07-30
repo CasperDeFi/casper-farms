@@ -1,5 +1,7 @@
 import Web3 from 'web3'
 import tokenAbi from '../data/token-abi.json'
+import axios from 'axios'
+
 
 export default async function useTVL() {
     let tvl = 0
@@ -16,19 +18,27 @@ export default async function useTVL() {
     const usdcAddress = "0x04068da6c83afcfa0e13ba15a6696662335d5b75"
 
     const contractWFTM = new web3Default.eth.Contract(tokenAbi as any, '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83')
-    const FTMPriceRequest = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=fantom&vs_currencies=usd')
-    const FTMPriceResponse = await FTMPriceRequest.json()
-    const FTMPrice = FTMPriceResponse.fantom.usd
+    let wftmPrice
+    try{
+        const { data } = await axios.get('https://api.casperdefi.com/v1/tokens/0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83?chainId=250&exchange=spirit')
+        wftmPrice = parseFloat(data.data.token.priceUSD).toFixed(5)
+    }catch{}
+    const FTMPrice = wftmPrice
 
     const contractCASPER = new web3Default.eth.Contract(tokenAbi as any, '0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345')
-    const CasperPriceRequest = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=casper-defi&vs_currencies=usd')
-    const CasperPriceResponse = await CasperPriceRequest.json()
-    const CasperPrice = CasperPriceResponse['casper-defi'].usd
+    let CasperPrice
+    try{
+        const { data } = await axios.get('https://api.casperdefi.com/v1/tokens/0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345?chainId=250&exchange=spirit')
+        CasperPrice = parseFloat(data.data.token.priceUSD).toFixed(5)
+    }catch{}
 
     const contractSpirit = new web3Default.eth.Contract(tokenAbi as any, spiritAddress)
-    const spiritPriceRequest = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=spiritswap&vs_currencies=usd')
-    const spiritPriceResponse = await spiritPriceRequest.json()
-    const spiritPrice = spiritPriceResponse['spiritswap'].usd
+    let spiritPrice;
+    try{
+        const { data } = await axios.get('https://api.casperdefi.com/v1/tokens/0x5cc61a78f164885776aa610fb0fe1257df78e59b?chainId=250&exchange=spirit')
+        spiritPrice = parseFloat(data.data.token.priceUSD).toFixed(5)
+    }catch{}
+
 
     const contractUSDC = new web3Default.eth.Contract(tokenAbi as any, usdcAddress)
     const contractPool0 = new web3Default.eth.Contract(tokenAbi as any, '0xca08C87466319F58660a439E46329D689718FefC')
