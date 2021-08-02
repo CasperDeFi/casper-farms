@@ -122,5 +122,19 @@
         "multiplier": "",
         "lpLink" : "https://swap.spiritswap.finance/#/add/0x9fc071ce771c7b27b7d9a57c32c0a84c18200f8a/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345",
         "isSingleToken": "false"
+    },
+    {
+        "id": 9,
+        "name": "TBOND",
+        "img": "https://i.imgur.com/5ZpZLAW.png",
+        "risk": 2,
+        "type": "single-stake",
+        "asset": ["tbond"],
+        "slug": "tbond",
+        "address": "0x24248CD1747348bDC971a5395f4b3cd7feE94ea0",
+        "fee": "1%",
+        "multiplier": "",
+        "lpLink" : "https://tomb.finance",
+        "isSingleToken": "true"
     }
 ]
