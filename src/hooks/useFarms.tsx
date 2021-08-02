@@ -18,8 +18,8 @@ export default function useFarms(slug) {
     const [userInfo, setUserInfo] = useState({})
     const [pendingCASPER, setPendingCASPER] = useState('-')
     const [allowance, setAllowance] = useState(0)
-    const [yearlyAPR, setYearlyAPR] = useState('loading')
-    const [dailyAPR, setDailyAPR] = useState('loading')
+    const [yearlyAPR, setYearlyAPR] = useState('👻')
+    const [dailyAPR, setDailyAPR] = useState('👻')
     const [pending, setPending] = useState(0)
 
     const [tvl, setTvl] = useState('0')
