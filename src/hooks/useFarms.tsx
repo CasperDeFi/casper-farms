@@ -197,7 +197,7 @@ export default function useFarms(slug) {
                 const totalSupplyFormatted = web3Default.utils.fromWei(totalSupply)
                 const prettyTVL0 = LPWorth.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL0)
-                const yearly = (96296 * CasperPrice / LPWorth * 100)
+                const yearly = (95131 * CasperPrice / LPWorth * 100)
                 const daily = yearly / 356
                 const yearlyFormatted = yearly.toFixed().toLocaleString()
                 const dailyFormatted = daily.toFixed(2).toLocaleString()
@@ -210,7 +210,7 @@ export default function useFarms(slug) {
                 const prettyTVL1 = pool1TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL1)
 
-                const yearly1 = (77035 * CasperPrice / pool1TVL * 100)
+                const yearly1 = (76105 * CasperPrice / pool1TVL * 100)
                 const daily1 = yearly1 / 356
                 const yearlyFormatted1 = yearly1.toFixed().toLocaleString()
                 const dailyFormatted1 = daily1.toLocaleString()
@@ -226,7 +226,7 @@ export default function useFarms(slug) {
                 const prettyTVL2 = pool2TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL2)
 
-                const yearly2 = (105922 * CasperPrice / pool2TVL * 100)
+                const yearly2 = (104644 * CasperPrice / pool2TVL * 100)
                 const daily2 = yearly2 / 356
                 const yearlyFormatted2 = yearly2.toFixed().toLocaleString()
                 const dailyFormatted2 = daily2.toFixed(2).toLocaleString()
@@ -240,7 +240,7 @@ export default function useFarms(slug) {
                 const prettyTVL3 = pool3TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL3)
 
-                const yearly3 = (3852 * CasperPrice / pool3TVL * 100)
+                const yearly3 = (3805 * CasperPrice / pool3TVL * 100)
                 const daily3 = yearly3 / 356
                 const yearlyFormatted3 = yearly3.toFixed(2).toLocaleString()
                 const dailyFormatted3 = daily3.toFixed(2).toLocaleString()
@@ -254,7 +254,7 @@ export default function useFarms(slug) {
                 const prettyTVL4 = pool4TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL4)
 
-                const yearly4 = (3852 * CasperPrice / pool4TVL * 100)
+                const yearly4 = (3805 * CasperPrice / pool4TVL * 100)
                 const daily4 = yearly4 / 356
                 const yearlyFormatted4 = yearly4.toFixed(2).toLocaleString()
                 const dailyFormatted4 = daily4.toFixed(2).toLocaleString()
@@ -271,7 +271,7 @@ export default function useFarms(slug) {
                 const totalSupplyFormatted5 = web3Default.utils.fromWei(totalSupply5)
                 const prettyTVL5 = pool5TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL5)
-                const yearly5 = (19259 * CasperPrice / pool5TVL * 100)
+                const yearly5 = (19026 * CasperPrice / pool5TVL * 100)
                 const daily5 = yearly5 / 356
                 const yearlyFormatted5 = yearly5.toFixed().toLocaleString()
                 const dailyFormatted5 = daily5.toFixed().toLocaleString()
@@ -289,7 +289,7 @@ export default function useFarms(slug) {
                 const totalSupplyFormatted6 = web3Default.utils.fromWei(totalSupply6)
                 const prettyTVL6 = pool6TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL6)
-                const yearly6 = (481 * CasperPrice / pool6TVL * 100)
+                const yearly6 = (476 * CasperPrice / pool6TVL * 100)
                 const daily6 = yearly6 / 356
                 const yearlyFormatted6 = yearly6.toFixed().toLocaleString()
                 const dailyFormatted6 = daily6.toFixed(2).toLocaleString()
@@ -304,7 +304,7 @@ export default function useFarms(slug) {
                 const prettyTVL7 = pool7TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL7)
 
-                const yearly7 = (3852 * CasperPrice / pool7TVL * 100)
+                const yearly7 = (3805 * CasperPrice / pool7TVL * 100)
                 const daily7 = yearly7 / 356
                 const yearlyFormatted7 = yearly7.toFixed(2).toLocaleString()
                 const dailyFormatted7 = daily7.toFixed(2).toLocaleString()
@@ -326,7 +326,7 @@ export default function useFarms(slug) {
                 const prettyTVL8 = pool8TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL8)
 
-                const yearly8 = (4815 * CasperPrice / pool8TVL * 100)
+                const yearly8 = (4757 * CasperPrice / pool8TVL * 100)
                 const daily8 = yearly8 / 356
                 const yearlyFormatted8 = yearly8.toFixed(2).toLocaleString()
                 const dailyFormatted8 = daily8.toFixed(2).toLocaleString()
@@ -334,19 +334,19 @@ export default function useFarms(slug) {
                 setDailyAPR(dailyFormatted8)
             }
 
-            // if (id == 9) {
-            //     const balanceTbond = await contractTbond.methods.balanceOf(casperMasterChef).call()
-            //     const pool10TVL = parseFloat(web3Default.utils.fromWei(balanceTbond)) * Math.sqrt(tombPrice)
-            //     const prettyTVL10 = pool10TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
-            //     setTvl(prettyTVL10)
+            if (id == 9) {
+                const balanceTbond = await contractTbond.methods.balanceOf(casperMasterChef).call()
+                const pool10TVL = parseFloat(web3Default.utils.fromWei(balanceTbond)) * Math.sqrt(tombPrice)
+                const prettyTVL10 = pool10TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+                setTvl(prettyTVL10)
 
-            //     const yearly10 = (3760 * CasperPrice / pool10TVL * 100)
-            //     const daily10 = yearly10 / 356
-            //     const yearlyFormatted10 = yearly10.toFixed(2).toLocaleString()
-            //     const dailyFormatted10 = daily10.toFixed(2).toLocaleString()
-            //     setYearlyAPR(yearlyFormatted10)
-            //     setDailyAPR(dailyFormatted10)
-            // }
+                const yearly10 = (3805 * CasperPrice / pool10TVL * 100)
+                const daily10 = yearly10 / 356
+                const yearlyFormatted10 = yearly10.toFixed(2).toLocaleString()
+                const dailyFormatted10 = daily10.toFixed(2).toLocaleString()
+                setYearlyAPR(yearlyFormatted10)
+                setDailyAPR(dailyFormatted10)
+            }
 
             // if (id == 10) {
             //     const balanceTomb = await contractTomb.methods.balanceOf(casperMasterChef).call()
