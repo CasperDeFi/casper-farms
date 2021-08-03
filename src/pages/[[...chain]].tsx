@@ -24,6 +24,7 @@ export async function getServerSideProps(context) {
     try{
         const { data } = await axios.get('https://cors-anywhere.herokuapp.com/https://api.casperdefi.com/v1/tokens/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345?chainId=250&exchange=spirit')
         return { props: { query: context.query, casperPrice: data.data.token.priceUSD } }
+
     }
     catch{
         return { props: { query: context.query, casperPrice: 'loading' } }

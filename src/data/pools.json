@@ -9,7 +9,7 @@
         "slug": "casper-ftm",
         "address": "0xca08C87466319F58660a439E46329D689718FefC",
         "fee": "0%",
-        "multiplier": "0.5x",
+        "multiplier": "",
         "lpLink": "https://swap.spiritswap.finance/#/add/FTM/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345",
         "isSingleToken": "false"
     },
@@ -23,7 +23,7 @@
         "slug": "casper",
         "address": "0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345",
         "fee": "0%",
-        "multiplier": "0.5x",
+        "multiplier": "",
         "isSingleToken": "true"
     },
     {
@@ -49,8 +49,8 @@
         "asset": "wftm",
         "slug": "wftm",
         "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83",
-        "fee": "5%",
-        "multiplier": "0.1x",
+        "fee": "1%",
+        "multiplier": "",
         "isSingleToken": "true"
     },
     {
@@ -62,8 +62,8 @@
         "asset": "usdc",
         "slug": "usdc",
         "address": "0x04068da6c83afcfa0e13ba15a6696662335d5b75",
-        "fee": "5%",
-        "multiplier": "0.1x",
+        "fee": "1%",
+        "multiplier": "",
         "isSingleToken": "true",
         "lpLink" : "https://swap.spiritswap.finance/#/swap"
     },
@@ -77,7 +77,7 @@
         "slug": "casper-spirit",
         "address": "0x9f5182fEfA4092cA11F9DBeb383f314B6D3381D0",
         "fee": "0%",
-        "multiplier": "2x",
+        "multiplier": "",
         "lpLink" : "https://swap.spiritswap.finance/#/add/0x5Cc61A78F164885776AA610fb0FE1257df78E59B/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345",
         "isSingleToken": "false"
     },
@@ -91,7 +91,7 @@
         "slug": "casper-grim",
         "address": "0xC6Ec0bd31BC934addd12d587b48455F2b25BcACB",
         "fee": "0%",
-        "multiplier": "2x",
+        "multiplier": "",
         "lpLink" : "https://swap.spiritswap.finance/#/add/0x7ec94c4327dc757601b4273cd67014d7760be97e/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345",
         "isSingleToken": "false"
     },
@@ -104,9 +104,51 @@
         "asset": "spirit",
         "slug": "spirit",
         "address": "0x5cc61a78f164885776aa610fb0fe1257df78e59b",
-        "fee": "2%",
-        "multiplier": "0.5x",
+        "fee": "1%",
+        "multiplier": "",
         "isSingleToken": "true",
         "lpLink" : "https://swap.spiritswap.finance/#/swap"
+    },
+    {
+        "id": 8,
+        "name": "CASPER-IFUSD LP",
+        "img": "https://i.imgur.com/TqULzJ1.png",
+        "risk": 2,
+        "type": "lp-stake",
+        "asset": ["casper", "ifusd"],
+        "slug": "casper-ifusd",
+        "address": "0x7d07d48edc24a35ad071e726541dba96d8a57c55",
+        "fee": "0%",
+        "multiplier": "",
+        "lpLink" : "https://swap.spiritswap.finance/#/add/0x9fc071ce771c7b27b7d9a57c32c0a84c18200f8a/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345",
+        "isSingleToken": "false"
+    },
+    {
+        "id": 9,
+        "name": "TBOND",
+        "img": "https://i.imgur.com/5ZpZLAW.png",
+        "risk": 2,
+        "type": "single-stake",
+        "asset": ["tbond"],
+        "slug": "tbond",
+        "address": "0x24248CD1747348bDC971a5395f4b3cd7feE94ea0",
+        "fee": "1%",
+        "multiplier": "",
+        "lpLink" : "https://tomb.finance",
+        "isSingleToken": "true"
+    },
+    {
+        "id": 11,
+        "name": "SCREAM",
+        "img": "https://i.imgur.com/X0TEvQV.png",
+        "risk": 2,
+        "type": "single-stake",
+        "asset": ["scream"],
+        "slug": "scream",
+        "address": "0xe0654C8e6fd4D733349ac7E09f6f23DA256bF475",
+        "fee": "1%",
+        "multiplier": "",
+        "lpLink" : "https://spookyswap.finance/swap?inputCurrency=FTM&outputCurrency=0xe0654c8e6fd4d733349ac7e09f6f23da256bf475",
+        "isSingleToken": "true"
     }
 ]
