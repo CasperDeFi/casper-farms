@@ -202,7 +202,7 @@ export default function useFarms(slug) {
                 const totalSupplyFormatted = web3Default.utils.fromWei(totalSupply)
                 const prettyTVL0 = LPWorth.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL0)
-                const yearly = (9600 * CasperPrice / LPWorth * 100)
+                const yearly = (96000 * CasperPrice / LPWorth * 100)
                 const daily = yearly / 356
                 const yearlyFormatted = yearly.toFixed().toLocaleString()
                 const dailyFormatted = daily.toFixed(2).toLocaleString()
