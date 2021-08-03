@@ -27,6 +27,7 @@ export async function getServerSideProps(context) {
     }
 }
 
+
 export default function IndexPage({ query, casperPrice }) {
     const wallet = useWallet()
     const router = useRouter()
@@ -36,7 +37,7 @@ export default function IndexPage({ query, casperPrice }) {
             if (window.ethereum) {
                 wallet.connect()
             }
-        } catch {}
+        } catch { }
     }, [])
 
     const [chain, setChain] = useState(query?.chain?.[0] || 'FTM')
@@ -61,6 +62,25 @@ export default function IndexPage({ query, casperPrice }) {
         // }
     }
     getTVL()
+
+    const addCasperToMM = async () => {
+
+        try {
+            // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+            const wasAdded = await ethereum.request({
+                method: 'wallet_watchAsset',
+                params: {
+                    type: 'ERC20', // Initially only supports ERC20, but eventually more!
+                    options: {
+                        address: "0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345", // The address that the token is at.
+                        symbol: "CASPER", // A ticker symbol or shorthand, up to 5 chars.
+                        decimals: 18, // The number of decimals in the token
+                        image: "https://i.imgur.com/Pb0k9Sw.png", // A string url of the token logo
+                    },
+                },
+            });
+        } catch (error) { console.log(error) }
+    }
 
     return (
         <>
@@ -105,7 +125,7 @@ export default function IndexPage({ query, casperPrice }) {
                             Purchase Casper
                         </a>
                     </p>
-                    <p className="font-mono opacity-50 text-xs underline hover:no-underline">Add To MetaMask</p>
+                    <p onClick={()=> addCasperToMM() } style={{cursor: 'pointer'}} className="font-mono opacity-50 text-xs underline hover:no-underline">Add To MetaMask</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -134,7 +154,7 @@ export default function IndexPage({ query, casperPrice }) {
                     ))}
                 </div>
 
-                <div className="text-center">
+                <div  className="text-center">
                     <p className="text-2xl font-mono font-extrabold md:text-4xl opacity-25">Powered by CasperDefi</p>
                 </div>
             </div>
