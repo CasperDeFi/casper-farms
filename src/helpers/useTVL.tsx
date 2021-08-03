@@ -19,28 +19,30 @@ export default async function useTVL() {
     const tombAddress = "0x6c021ae822bea943b2e66552bde1d2696a53fbb7"
     const tbondAddress = "0x24248cd1747348bdc971a5395f4b3cd7fee94ea0"
     const casperIFUSDLPAddress = "0x7D07d48EdC24a35ad071e726541dBA96D8A57C55"
+    const screamAddress = "0xe0654c8e6fd4d733349ac7e09f6f23da256bf475"
+
 
     const contractWFTM = new web3Default.eth.Contract(tokenAbi as any, '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83')
     let wftmPrice
-    try{
+    try {
         const { data } = await axios.get('https://cors-anywhere.herokuapp.com/https://api.casperdefi.com/v1/tokens/0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83?chainId=250&exchange=spirit')
         wftmPrice = parseFloat(data.data.token.priceUSD).toFixed(5)
-    }catch{}
+    } catch { }
     const FTMPrice = wftmPrice
 
     const contractCASPER = new web3Default.eth.Contract(tokenAbi as any, '0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345')
     let CasperPrice
-    try{
+    try {
         const { data } = await axios.get('https://cors-anywhere.herokuapp.com/https://api.casperdefi.com/v1/tokens/0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345?chainId=250&exchange=spirit')
         CasperPrice = parseFloat(data.data.token.priceUSD).toFixed(5)
-    }catch{}
+    } catch { }
 
     const contractSpirit = new web3Default.eth.Contract(tokenAbi as any, spiritAddress)
     let spiritPrice;
-    try{
+    try {
         const { data } = await axios.get('https://cors-anywhere.herokuapp.com/https://api.casperdefi.com/v1/tokens/0x5cc61a78f164885776aa610fb0fe1257df78e59b?chainId=250&exchange=spirit')
         spiritPrice = parseFloat(data.data.token.priceUSD).toFixed(5)
-    }catch{}
+    } catch { }
 
 
     const tombPriceRequest = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=tomb&vs_currencies=usd')
@@ -52,6 +54,8 @@ export default async function useTVL() {
     const contractPool5 = new web3Default.eth.Contract(tokenAbi as any, casperSpiritLPAddress)
     const contractPool6 = new web3Default.eth.Contract(tokenAbi as any, casperGrimLPAddress)
     const contractPool8 = new web3Default.eth.Contract(tokenAbi as any, casperIFUSDLPAddress)
+    const contractScream = new web3Default.eth.Contract(tokenAbi as any, screamAddress)
+
 
 
     const contractTomb = new web3Default.eth.Contract(tokenAbi as any, tombAddress)
@@ -108,8 +112,11 @@ export default async function useTVL() {
     const balanceTbond = await contractTbond.methods.balanceOf(casperMasterChef).call()
     const pool9TVL = parseFloat(web3Default.utils.fromWei(balanceTbond)) * Math.sqrt(tombPrice)
 
+    const balanceScream = await contractScream.methods.balanceOf(casperMasterChef).call()
+    const pool11TVL = parseFloat(web3Default.utils.fromWei(balanceScream)) * 10.78
 
-    tvl = pool0TVL + pool1TVL + pool2TVL + pool3TVL + pool4TVL + pool5TVL + pool6TVL + pool7TVL + pool8TVL + pool9TVL
+
+    tvl = pool0TVL + pool1TVL + pool2TVL + pool3TVL + pool4TVL + pool5TVL + pool6TVL + pool7TVL + pool8TVL + pool9TVL + pool11TVL
     tvl.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
 
 

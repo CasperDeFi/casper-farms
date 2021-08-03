@@ -369,7 +369,7 @@ export default function useFarms(slug) {
 
             if (id == 11) {
                 const balanceScream = await contractScream.methods.balanceOf(casperMasterChef).call()
-                const pool11TVL = parseFloat(web3Default.utils.fromWei(balanceScream)) * 9.3
+                const pool11TVL = parseFloat(web3Default.utils.fromWei(balanceScream)) * 10.78
                 const prettyTVL11 = pool11TVL.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
                 setTvl(prettyTVL11)
 
