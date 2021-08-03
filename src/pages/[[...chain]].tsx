@@ -10,8 +10,6 @@ import useTVL from '../helpers/useTVL'
 
 import getTotalReward from '../helpers/getPendingRewards'
 
-
-
 const people = [
     { key: 'Durward Reynolds', value: false },
     { key: 'Kenton Towne', value: false },
@@ -21,14 +19,11 @@ const people = [
 ]
 
 export async function getServerSideProps(context) {
-    try{
+    try {
         const { data } = await axios.get('Https://api.casperdefi.com/v1/tokens/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345?chainId=250&exchange=spirit')
         return { props: { query: context.query, casperPrice: data.data.token.priceUSD } }
-
-    }
-    catch{
+    } catch {
         return { props: { query: context.query, casperPrice: 'loading' } }
-
     }
 }
 
@@ -37,23 +32,19 @@ export default function IndexPage({ query, casperPrice }) {
     const router = useRouter()
 
     useEffect(() => {
-        try{
-            if(window.ethereum){
+        try {
+            if (window.ethereum) {
                 wallet.connect()
             }
-        }
-
-        catch{
-
-        }
-   }, []);
+        } catch {}
+    }, [])
 
     const [chain, setChain] = useState(query?.chain?.[0] || 'FTM')
     const [showChainPicker, setShowChainPicker] = useState(false)
     const [selectedPerson, setSelectedPerson] = useState(people[0])
     const [tvl, setTvl] = useState('loading')
-    const [pendingCasper, setPendingCasper] = useState("0")
-    const [pendingCasperUSD, setPendingCasperUSD] = useState("Coming Soon")
+    const [pendingCasper, setPendingCasper] = useState('0')
+    const [pendingCasperUSD, setPendingCasperUSD] = useState('Coming Soon')
     const [userDepositUSD, setUserDepositUSD] = useState('Coming Soon')
 
     useEffect(() => {
@@ -68,14 +59,8 @@ export default function IndexPage({ query, casperPrice }) {
         //     const rewardTotal = await getTotalReward()
         //     setPendingCasper(rewardTotal)
         // }
-
     }
     getTVL()
-
-
-
-
-
 
     return (
         <>
@@ -120,6 +105,7 @@ export default function IndexPage({ query, casperPrice }) {
                             Purchase Casper
                         </a>
                     </p>
+                    <p className="font-mono opacity-50 text-xs underline hover:no-underline">Add To MetaMask</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
