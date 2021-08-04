@@ -18,14 +18,14 @@ const people = [
     { key: 'Katelyn Rohan', value: false }
 ]
 
-export async function getServerSideProps(context) {
-    try {
-        const { data } = await axios.get('Https://api.casperdefi.com/v1/tokens/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345?chainId=250&exchange=spirit')
-        return { props: { query: context.query, casperPrice: data.data.token.priceUSD } }
-    } catch {
-        return { props: { query: context.query, casperPrice: 'loading' } }
-    }
-}
+// export async function getServerSideProps(context) {
+//     try {
+//         const { data } = await axios.get('Https://api.casperdefi.com/v1/tokens/0xC30d1b0Ce932C3dd3373a2C23aDA4E9608CAf345?chainId=250&exchange=spirit')
+//         return { props: { query: context.query, casperPrice: data.data.token.priceUSD } }
+//     } catch {
+//         return { props: { query: context.query, casperPrice: 'loading' } }
+//     }
+// }
 
 
 export default function IndexPage({ query, casperPrice }) {
@@ -115,8 +115,8 @@ export default function IndexPage({ query, casperPrice }) {
 
                 <div className="text-center space-y-2">
                     <p className="text-4xl md:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-pink-400 to-blue-500">{tvl}</p>
-                    <p className="font-extended uppercase">Total Value Locked</p>
-                    <p className="text-1xl md:text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-blue-400 via-green-400 to-blue-500">CASPER Token: ${parseFloat(casperPrice).toFixed(2)}</p>
+                    {/* <p className="font-extended uppercase">Total Value Locked</p> */}
+                    {/* <p className="text-1xl md:text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-blue-400 via-green-400 to-blue-500">CASPER Token: ${parseFloat(casperPrice).toFixed(2)}</p> */}
                     <p>
                         <a
                             href=""
