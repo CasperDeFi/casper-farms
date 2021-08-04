@@ -32,6 +32,7 @@ export default function IndexPage({ query, casperPrice }) {
     const wallet = useWallet()
     const router = useRouter()
 
+
     useEffect(() => {
         try {
             if (window.ethereum) {
@@ -117,12 +118,12 @@ export default function IndexPage({ query, casperPrice }) {
                     <p className="text-1xl md:text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-blue-400 via-green-400 to-blue-500">CASPER Token: ${parseFloat(casperPrice).toFixed(2)}</p>
                     <p>
                         <a
-                            href="https://swap.spiritswap.finance/#/swap?outputCurrency=0xc30d1b0ce932c3dd3373a2c23ada4e9608caf345"
+                            href=""
                             target="_blank"
                             rel="noreferrer"
                             className="font-mono opacity-50 text-xs underline hover:no-underline"
                         >
-                            Purchase Casper
+                            DO NOT Purchase Casper
                         </a>
                     </p>
                     <p onClick={()=> addCasperToMM() } style={{cursor: 'pointer'}} className="font-mono opacity-50 text-xs underline hover:no-underline">Add To MetaMask</p>

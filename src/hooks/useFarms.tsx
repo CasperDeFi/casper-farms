@@ -97,13 +97,14 @@ export default function useFarms(slug) {
     const deposit = async (amount) => {
         setStatus('loading')
         try {
-            await approve(amount)
+            // await approve(amount)
 
-            const gas = await contract.methods.deposit(id, amount).estimateGas({ from: wallet.account })
+            // const gas = await contract.methods.deposit(id, amount).estimateGas({ from: wallet.account })
 
-            await contract.methods.deposit(id, amount).send({ from: wallet.account })
+            // await contract.methods.deposit(id, amount).send({ from: wallet.account })
 
-            await loadData()
+            // await loadData()
+            alert('PLEASE DO NOT DEPOSIT.')
         } catch (error) {
             console.log(error)
         }

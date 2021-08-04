@@ -49,7 +49,7 @@ export default function Pool({ pool }) {
                             <p className="uppercase text-xs font-extended opacity-50">Balance</p>
                         </div>
                         <div className="space-y-1">
-                            <p className="text-2xl font-extrabold">{data?.userInfo?.amount ? parseFloat(fromWei( data?.userInfo?.amount)).toFixed(2) : 'XX'}</p>
+                            <p className="text-2xl font-extrabold">{data?.userInfo?.amount ? parseFloat(fromWei(data?.userInfo?.amount)).toFixed(2) : 'XX'}</p>
                             <p className="uppercase text-xs font-extended opacity-50">Deposited</p>
                         </div>
                     </div>
@@ -90,33 +90,36 @@ export default function Pool({ pool }) {
                                 <form
                                     onSubmit={(e) => {
                                         e.preventDefault()
-                                        if(pool.id == 4){
+                                        if (pool.id == 4) {
                                             deposit(web3.utils.toWei(depositInput, 'mwei'))
 
-                                        }else{
+                                        } else {
                                             deposit(web3.utils.toWei(depositInput))
                                         }
                                     }}
                                     className="border-b md:border-b-0 md:border-r border-purple-900 p-6 space-y-4"
                                 >
-                                    <p className="font-extended uppercase">Deposit</p>
+                                    <p className="font-extended uppercase">DO NOT DEPOSIT</p>
                                     <img className="w-16 mx-auto" src="/img/vault-icon.svg" alt="" />
                                     <div className="border border-purple-800 rounded shadow-inner flex items-center">
-                                        <input value={depositInput} onChange={(e) => setDepositInput(e.target.value)} placeholder="0.00" className="w-full flex-1 bg-transparent p-2" type="number" />
+                                        {/* <input value={depositInput} onChange={(e) => setDepositInput(e.target.value)} placeholder="0.00" className="w-full flex-1 bg-transparent p-2" type="number" /> */}
                                         <div className="p-2">
-                                            <button onClick={() => 
-                                                setDepositInput(fromWei(balance.toString()))} type="button" className="bg-purple-800 text-purple-200 px-2 py-1 rounded text-xs uppercase font-mono">
+                                            <button onClick={() =>
+                                                alert('PLEASE DO NOT DEPOSIT. WITHDRAW ALL FUNDS')
+                                            } type="button" className="bg-purple-800 text-purple-200 px-2 py-1 rounded text-xs uppercase font-mono"
+                                            >
                                                 Max
                                             </button>
                                         </div>
                                     </div>
                                     <div>
                                         <button
-                                            disabled={!depositInput}
-                                            type="submit"
+                                            onClick={() =>
+                                                alert('PLEASE DO NOT DEPOSIT. WITHDRAW ALL FUNDS')
+                                            } type="submit"
                                             className={classNames('w-full bg-purple-500 rounded text-purple-200 py-1 px-2 font-medium shadow-2xl', !depositInput && 'opacity-50 cursor-not-allowed')}
                                         >
-                                            {!allowance ? 'Approve' : 'Deposit to Vault'}
+                                            DO NOT DEPOSIT
                                         </button>
                                     </div>
                                 </form>
@@ -124,10 +127,10 @@ export default function Pool({ pool }) {
                                     onSubmit={(e) => {
                                         e.preventDefault()
 
-                                        if(pool.id == 4){
+                                        if (pool.id == 4) {
                                             withdraw(web3.utils.toWei(withdrawInput, 'mwei'))
 
-                                        }else{
+                                        } else {
                                             withdraw(web3.utils.toWei(withdrawInput))
                                         }
                                     }}
@@ -143,8 +146,8 @@ export default function Pool({ pool }) {
                                                     onClick={() => {
                                                         setWithdrawInput(fromWei(data?.userInfo?.amount))
                                                     }
-                                                
-                                                }
+
+                                                    }
                                                     type="button"
                                                     className="bg-purple-800 text-purple-200 px-2 py-1 rounded text-xs uppercase font-mono"
                                                 >
