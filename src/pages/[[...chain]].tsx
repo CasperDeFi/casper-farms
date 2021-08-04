@@ -55,7 +55,8 @@ export default function IndexPage({ query, casperPrice }) {
 
     const getTVL = async () => {
         const temp = await useTVL()
-        setTvl(temp.toLocaleString('en-US', { style: 'currency', currency: 'USD' }))
+        // setTvl(temp.toLocaleString('en-US', { style: 'currency', currency: 'USD' }))
+        setTvl("Please Withdraw From Farms")
 
         // if(wallet.account){
         //     const rewardTotal = await getTotalReward()
